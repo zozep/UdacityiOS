@@ -12,9 +12,12 @@ emojiLove(stringParameterOne: "cats", stringParameterTwo: "dogs")
 //: ### Exercise 15
 //: The function `median` should take three `Int` parameters and return the `Int` value in the middle.
 func median(num1: Int, num2: Int, num3: Int) -> Int {
-    return num2
+    let numbers = [num1, num2, num3]
+    let sorted = numbers.sorted()
+ 
+    return sorted[1]
 }
-median(num1: 3, num2: 4, num3: 5)
+median(num1: 91, num2: 10, num3: 58)
 
 
 /*:

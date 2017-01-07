@@ -14,8 +14,8 @@ import UIKit
 
 var gallonsRemainingInTank: Double,
     ageOfSpecimenInWeeks: Int,
-    studentNickName: String,
-    teaspoonsNutmeg: Float = 0
+    studentNickName: String
+let teaspoonsNutmeg: Float = 0
 
 
 //: ### Exercise 2
