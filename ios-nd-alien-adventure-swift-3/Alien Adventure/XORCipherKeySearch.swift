@@ -17,7 +17,7 @@ extension Hero {
         // unused variables 😀.
         var key: UInt8
         key = 0
-        
+
         for x in UInt8.min..<UInt8.max {
             
             print(x)
@@ -28,11 +28,13 @@ extension Hero {
             for character in encryptedString {
                 // ADD CODE: perform decryption
                 print(character)
+                decrypted.append(character ^ x)
             }
             
             if let decryptedString = String(bytes: decrypted,
                 encoding: String.Encoding.utf8), decryptedString == "udacity" {
                     // ADD CODE: found match, now what?
+                key = x
             }
         }
         
