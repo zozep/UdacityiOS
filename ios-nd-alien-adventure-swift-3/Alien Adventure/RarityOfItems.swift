@@ -27,7 +27,7 @@ extension Hero {
                 
             case .legendary:
                 result[.legendary]! += 1
-            
+            }
         }
         return result
     }
