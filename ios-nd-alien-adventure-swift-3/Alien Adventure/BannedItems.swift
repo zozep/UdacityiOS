@@ -11,6 +11,7 @@ import Foundation
 extension Hero {
     
     func bannedItems(dataFile: String) -> [Int] {
+        //look thru list, find items that mention "laser" && < 30 carbon years old
         return [Int]()
     }
 }
