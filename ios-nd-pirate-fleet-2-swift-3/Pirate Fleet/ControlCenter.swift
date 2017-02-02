@@ -54,26 +54,52 @@ struct Ship {
     }
 
 // TODO: Add custom initializers
-//    init(length: Int) {
-//        self.length = length
-//        self.hitTracker = HitTracker()
-//    }
+    init(length: Int, location: GridLocation, isVertical: Bool) {
+        self.length = length
+        self.location = location
+        self.isVertical = isVertical
+        self.hitTracker = HitTracker()
+    }
+    
+    init(length: Int, location: GridLocation, isVertical: Bool, isWooden: Bool) {
+        self.length = length
+        self.location = location
+        self.isVertical = isVertical
+        self.isWooden = isWooden
+        self.hitTracker = HitTracker()
+    }
 }
 
 // TODO: Change Cell protocol to PenaltyCell and add the desired properties
-protocol Cell {
+protocol PenaltyCell {
     var location: GridLocation {get}
+    var guaranteesHit: Bool {get}
+    var penaltyText: String {get}
+    
 }
 
 // TODO: Adopt and implement the PenaltyCell protocol
-struct Mine: Cell {
+struct Mine: PenaltyCell {
     let location: GridLocation
-
+    let guaranteesHit: Bool
+    let penaltyText: String
+    init (location: GridLocation, penaltyText: String){
+        self.location = location
+        self.penaltyText = penaltyText
+        self.guaranteesHit = false
+    }
+    init (location: GridLocation, penaltyText: String, guaranteesHit: Bool) {
+        self.location = location
+        self.penaltyText = penaltyText
+        self.guaranteesHit = guaranteesHit
+    }
 }
 
 // TODO: Adopt and implement the PenaltyCell protocol
-struct SeaMonster: Cell {
+struct SeaMonster: PenaltyCell {
     let location: GridLocation
+    let guaranteesHit = true
+    let penaltyText = "Whoa Nessie!"
 }
 
 class ControlCenter {
