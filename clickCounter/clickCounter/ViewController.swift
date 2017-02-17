@@ -35,19 +35,24 @@ class ViewController: UIViewController {
         let decrementButton = UIButton()
         decrementButton.frame = CGRect.init(x: 50, y: 150, width: 50, height: 50)
         decrementButton.setTitle("decrement", for: .normal)
-        decrementButton.setTitleColor(UIColor.red, for: .normal)
+        decrementButton.setTitleColor(UIColor.black, for: .normal)
         self.view.addSubview(decrementButton)
         decrementButton.addTarget(self, action: #selector(ViewController.decrementCount), for: UIControlEvents.touchUpInside)
+
         
     }
     func incrementCount() {
         self.count += 1
         self.label.text = "\(self.count)"
+        self.view.backgroundColor = UIColor.blue
+
     }
     
     func decrementCount() {
         self.count -= 1
         self.label.text = "\(self.count)"
+        self.view.backgroundColor = UIColor.darkGray
+
     }
 
 }
