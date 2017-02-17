@@ -16,14 +16,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func experiment(_ sender: Any) {
-        let controller = UIAlertController()
-        controller.title = "Test Alert Title "
-        controller.message = "This is a test message"
         
-        let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default) { action in self.dismiss(animated: true, completion: nil)
-        }
-        
-        controller.addAction(okAction)
+        let image = UIImage()
+        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
     }
     
