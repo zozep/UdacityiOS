@@ -15,11 +15,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBAction func experiment() {
-        let nextController = UIImagePickerController()
-        self.present(nextController, animated: true, completion: nil)
+    @IBAction func experiment(_ sender: Any) {
+        let controller = UIAlertController()
+        controller.title = "Test Alert Title "
+        controller.message = "This is a test message"
         
+        let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default) { action in self.dismiss(animated: true, completion: nil)
+        }
+        
+        controller.addAction(okAction)
+        self.present(controller, animated: true, completion: nil)
     }
-
+    
 }
 

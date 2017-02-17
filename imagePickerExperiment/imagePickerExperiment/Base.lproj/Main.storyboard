@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Click"/>
                                 <connections>
-                                    <action selector="experiment" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZu-aq-CcF"/>
+                                    <action selector="experiment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R8j-RB-oYz"/>
                                 </connections>
                             </button>
                         </subviews>
