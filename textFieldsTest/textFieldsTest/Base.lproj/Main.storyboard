@@ -22,19 +22,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your zipcode here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CV3-jz-woM" userLabel="Zipcode Text Field 1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CV3-jz-woM" userLabel="Text Field 1">
                                 <rect key="frame" x="16" y="28" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5oX-RI-vu6" userLabel="Cash Text Field 2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5oX-RI-vu6" userLabel="Text Field 1">
                                 <rect key="frame" x="16" y="66" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qdJ-Tn-YYR" userLabel="Lockable Text Field 3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qdJ-Tn-YYR" userLabel="Text Field 1">
                                 <rect key="frame" x="16" y="104" width="286" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,12 +59,6 @@
                             <constraint firstItem="5oX-RI-vu6" firstAttribute="top" secondItem="CV3-jz-woM" secondAttribute="bottom" constant="8" symbolic="YES" id="rjL-vJ-fC9"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="editingSwitch" destination="jmD-IU-Lai" id="qLf-JQ-di2"/>
-                        <outlet property="textField1" destination="CV3-jz-woM" id="aWZ-vh-nrd"/>
-                        <outlet property="textField2" destination="5oX-RI-vu6" id="RAA-ME-Bod"/>
-                        <outlet property="textField3" destination="qdJ-Tn-YYR" id="VNE-pZ-Baj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

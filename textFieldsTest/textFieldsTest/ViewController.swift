@@ -10,22 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField1: UITextField!
-    @IBOutlet weak var textField2: UITextField!
-    @IBOutlet weak var textField3: UITextField!
-    @IBOutlet weak var editingSwitch: UISwitch!
-    
-    let zipcodeDelegate = ZipCodeTextFieldDelegate()
-    let CashTextFieldDelegate = CashTextFieldDelegate()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.textField1.delegate = self.zipCodeDelegate
-        self.textField2.delegate = self.cashDelegate
-        self.textField3.delegate = self
-
+        // Do any additional setup after loading the view, typically from a nib.
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 
 }
 

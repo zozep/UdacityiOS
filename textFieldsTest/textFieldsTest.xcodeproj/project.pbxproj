@@ -12,8 +12,6 @@
 		7CA74D151E5848FE00D485AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA74D131E5848FE00D485AD /* Main.storyboard */; };
 		7CA74D171E5848FE00D485AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA74D161E5848FE00D485AD /* Assets.xcassets */; };
 		7CA74D1A1E5848FE00D485AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA74D181E5848FE00D485AD /* LaunchScreen.storyboard */; };
-		7CA74D221E584BE300D485AD /* CashTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA74D211E584BE300D485AD /* CashTextFieldDelegate.swift */; };
-		7CA74D241E584BF900D485AD /* ZipcodeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA74D231E584BF900D485AD /* ZipcodeTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +22,6 @@
 		7CA74D161E5848FE00D485AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA74D191E5848FE00D485AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CA74D1B1E5848FE00D485AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CA74D211E584BE300D485AD /* CashTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashTextFieldDelegate.swift; sourceTree = "<group>"; };
-		7CA74D231E584BF900D485AD /* ZipcodeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipcodeTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +54,7 @@
 		7CA74D0E1E5848FE00D485AD /* textFieldsTest */ = {
 			isa = PBXGroup;
 			children = (
-				7CA74D251E584C0C00D485AD /* Delegates */,
+				7CA74D0F1E5848FE00D485AD /* AppDelegate.swift */,
 				7CA74D111E5848FE00D485AD /* ViewController.swift */,
 				7CA74D131E5848FE00D485AD /* Main.storyboard */,
 				7CA74D161E5848FE00D485AD /* Assets.xcassets */,
@@ -66,16 +62,6 @@
 				7CA74D1B1E5848FE00D485AD /* Info.plist */,
 			);
 			path = textFieldsTest;
-			sourceTree = "<group>";
-		};
-		7CA74D251E584C0C00D485AD /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				7CA74D0F1E5848FE00D485AD /* AppDelegate.swift */,
-				7CA74D211E584BE300D485AD /* CashTextFieldDelegate.swift */,
-				7CA74D231E584BF900D485AD /* ZipcodeTextFieldDelegate.swift */,
-			);
-			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA74D121E5848FE00D485AD /* ViewController.swift in Sources */,
-				7CA74D221E584BE300D485AD /* CashTextFieldDelegate.swift in Sources */,
 				7CA74D101E5848FE00D485AD /* AppDelegate.swift in Sources */,
-				7CA74D241E584BF900D485AD /* ZipcodeTextFieldDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +302,6 @@
 				7CA74D201E5848FE00D485AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
