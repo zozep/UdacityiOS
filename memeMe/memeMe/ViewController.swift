@@ -16,9 +16,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
+    let picker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -47,6 +48,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+
         imagePicker.sourceType = .photoLibrary
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
@@ -55,7 +57,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.cameraCaptureMode = .photo
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true,completion: nil)
     }
 
 }
