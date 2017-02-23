@@ -39,7 +39,7 @@
                                 <rect key="frame" x="16" y="94" width="343" height="36"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="5iz-ue-USh" id="Gxo-VS-mYr"/>
                                 </connections>
@@ -48,7 +48,7 @@
                                 <rect key="frame" x="16" y="557" width="343" height="36"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="5iz-ue-USh" id="VmQ-Zo-MRv"/>
                                 </connections>
@@ -57,15 +57,15 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="feG-Kh-Zgj"/>
-                                    <barButtonItem title="Album" id="rTI-9Y-YxE">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="5iz-ue-USh" id="tFA-Ok-otL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wT7-Zq-nLk"/>
                                     <barButtonItem systemItem="camera" id="naP-0E-M6o">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="5iz-ue-USh" id="Lx5-ig-niM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wT7-Zq-nLk"/>
+                                    <barButtonItem title="Album" id="rTI-9Y-YxE">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="5iz-ue-USh" id="tFA-Ok-otL"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8Ej-Zx-PIc"/>
@@ -98,7 +98,7 @@
                         <outlet property="cameraButton" destination="naP-0E-M6o" id="eD2-Ei-mAy"/>
                         <outlet property="cancelButton" destination="tGY-z3-uAa" id="FRZ-mK-Ac0"/>
                         <outlet property="imagePickerView" destination="NdK-Gw-Wmo" id="64s-6w-czE"/>
-                        <outlet property="shareButton" destination="r9t-Tz-AJD" id="ALZ-cC-uDe"/>
+                        <outlet property="shareButton" destination="r9t-Tz-AJD" id="1mW-bn-hyr"/>
                         <outlet property="topNavBar" destination="z88-j1-efT" id="pUK-FM-Xqc"/>
                         <outlet property="topTextField" destination="bmD-ff-s6h" id="17h-Jq-idb"/>
                     </connections>

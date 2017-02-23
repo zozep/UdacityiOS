@@ -18,9 +18,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     @IBOutlet weak var topNavBar: UINavigationBar!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     let picker = UIImagePickerController()
+    var originalImage = UIImage()
+    var memedImage = UIImage()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -28,10 +30,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         topTextField.delegate = self
         bottomTextField.delegate = self
         
-        subscribeToKeyboardNotifications()
+        //subscribeToKeyboardNotifications()
         
         configureTextField(textField: topTextField)
         configureTextField(textField: bottomTextField)
@@ -40,14 +43,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.subscribeToKeyboardNotifications()
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        subscribeToKeyboardNotifications()
+        //cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-
     }
     
     //MARK: Album
@@ -81,7 +83,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(alertVC, animated: true, completion: nil)
     }
 
-    //MARK: - Delegate
+    
+    //MARK: - Delegate for UIImagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imagePickerView.image = image
@@ -108,22 +111,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        self.view.frame.origin.y = 0 - getKeyboardHeight(notification)
+        view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
-    func keyboardWillHide(_ notification: Notification){
-        self.view.frame.origin.y = 0 + getKeyboardHeight(notification)
+    func keyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y += getKeyboardHeight(notification)
     }
 
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         
-        if bottomTextField.isFirstResponder {
+//        if bottomTextField.isFirstResponder {
             return keyboardSize.cgRectValue.height
-        } else {
-            return 0
-        }
+//        } else {
+//            return 0
+//        }
     }
     
     func subscribeToKeyboardNotifications() {
