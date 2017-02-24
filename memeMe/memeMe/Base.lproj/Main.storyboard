@@ -57,17 +57,9 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="feG-Kh-Zgj"/>
-                                    <barButtonItem systemItem="camera" id="naP-0E-M6o">
-                                        <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="5iz-ue-USh" id="Lx5-ig-niM"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="naP-0E-M6o"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wT7-Zq-nLk"/>
-                                    <barButtonItem title="Album" id="rTI-9Y-YxE">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="5iz-ue-USh" id="tFA-Ok-otL"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem title="Album" id="rTI-9Y-YxE"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8Ej-Zx-PIc"/>
                                 </items>
                             </toolbar>
@@ -95,7 +87,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="LuI-3F-ihC" id="j0G-mG-hWT"/>
                         <outlet property="bottomToolBar" destination="EZj-Xl-lPG" id="eIE-Z4-sEH"/>
-                        <outlet property="cameraButton" destination="naP-0E-M6o" id="eD2-Ei-mAy"/>
+                        <outlet property="cameraButton" destination="naP-0E-M6o" id="rZO-Mo-xYA"/>
                         <outlet property="cancelButton" destination="tGY-z3-uAa" id="FRZ-mK-Ac0"/>
                         <outlet property="imagePickerView" destination="NdK-Gw-Wmo" id="64s-6w-czE"/>
                         <outlet property="shareButton" destination="r9t-Tz-AJD" id="1mW-bn-hyr"/>

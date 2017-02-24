@@ -9,20 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var topNavBar: UINavigationBar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var bottomToolBar: UIToolbar!
-    @IBOutlet weak var topNavBar: UINavigationBar!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
+
     
     let picker = UIImagePickerController()
-    var originalImage = UIImage()
-    var memedImage = UIImage()
+
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -44,7 +43,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
-        //cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+       
+        // if there's an image in the imageView, enable the share button
+        if let _ = imagePickerView.image {
+            shareButton.isEnabled = true
+        } else {
+            shareButton.isEnabled = false
+        }
+        
+        //To enable or disable camera bar button if camera is available for use or not
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+        
+        // Subscribe to keyboard notifications to allow the view to raise when necessary
+        self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
