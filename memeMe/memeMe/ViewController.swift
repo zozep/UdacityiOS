@@ -29,18 +29,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
     
+    //MARK: - Life Cycle func
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //subscribeToKeyboardNotifications()
-        
         configureTextField(textField: topTextField)
         configureTextField(textField: bottomTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
        
         // if there's an image in the imageView, enable the share button
         if let _ = imagePickerView.image {
@@ -59,14 +57,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        unsubscribeFromKeyboardNotifications()
+        self.unsubscribeFromKeyboardNotifications()
 
         func textFieldDidBeginEditing(textField: UITextField) {
-            if textField.text == "TOP" || textField.text == "BOTTOM"{
-                textField.text = ""
+            if textField.text == "TOP" || textField.text == "BOTTOM" {
+                topTextField.text = ""
             }
         }
     }
+    
     
     //MARK: - Meme related
     
@@ -78,7 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Render View To An Image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         //Show Toolbar and Navigation Bar
@@ -91,8 +90,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func save() {
         // Create The Meme
         let memedImage = generateMemedImage()
-        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image, memedImage:memedImage)
-        //TODO: Add to memes array in AppDelegate
+        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: memedImage)
         
     }
 
@@ -152,8 +150,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: -4] as [String : Any]
         
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: memeTextAttributes)
+        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: memeTextAttributes)
         textField.textAlignment = .center
         textField.delegate = self
     
@@ -197,5 +195,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
+    //MARK: - Share
+    @IBAction func share(_ sender: Any) {
+        //generate a memed image
+        let memedImage = generateMemedImage()
+        
+        //define an instance of ActivityViewController
+        let activityVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        // pass the ActivityViewController a memedImage as an activity item
+        activityVC.completionWithItemsHandler = { activity, success, items, error in
+            self.save()
+            self.dismiss(animated: true, completion: nil)
+        }
+        //present the VC
+        present(activityVC, animated: true, completion: nil)
+    }
+    
+    //MARK: - Cancel
+    @IBAction func cancel(_ sender: Any) {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        self.imagePickerView.image = nil
+    }
+    
 
 }
