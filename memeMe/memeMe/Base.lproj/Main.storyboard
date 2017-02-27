@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NdK-Gw-Wmo">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="565"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z88-j1-efT">
@@ -79,7 +79,7 @@
                             <constraint firstItem="EZj-Xl-lPG" firstAttribute="leading" secondItem="9Kz-g4-D9S" secondAttribute="leading" symbolic="YES" id="8f4-pX-F8i"/>
                             <constraint firstAttribute="trailing" secondItem="EZj-Xl-lPG" secondAttribute="trailing" symbolic="YES" id="FMm-OB-gNo"/>
                             <constraint firstItem="NdK-Gw-Wmo" firstAttribute="top" secondItem="z88-j1-efT" secondAttribute="bottom" symbolic="YES" id="KJL-Gy-iqh"/>
-                            <constraint firstItem="EZj-Xl-lPG" firstAttribute="top" secondItem="NdK-Gw-Wmo" secondAttribute="bottom" symbolic="YES" id="My1-4i-bhJ"/>
+                            <constraint firstItem="EZj-Xl-lPG" firstAttribute="top" secondItem="NdK-Gw-Wmo" secondAttribute="bottom" constant="-6" id="My1-4i-bhJ"/>
                             <constraint firstItem="NdK-Gw-Wmo" firstAttribute="leading" secondItem="z88-j1-efT" secondAttribute="leading" id="Q19-Zg-z91"/>
                             <constraint firstItem="z88-j1-efT" firstAttribute="top" secondItem="iZD-Xh-u9s" secondAttribute="bottom" symbolic="YES" id="QRX-Ub-rb6"/>
                             <constraint firstItem="bYf-hK-HvJ" firstAttribute="top" secondItem="EZj-Xl-lPG" secondAttribute="bottom" symbolic="YES" id="VOE-CR-KAG"/>
@@ -95,18 +95,18 @@
                     <connections>
                         <outlet property="albumButton" destination="rTI-9Y-YxE" id="Cs2-yi-1OU"/>
                         <outlet property="bottomTextField" destination="LuI-3F-ihC" id="j0G-mG-hWT"/>
-                        <outlet property="bottomToolBar" destination="EZj-Xl-lPG" id="eIE-Z4-sEH"/>
                         <outlet property="cameraButton" destination="naP-0E-M6o" id="rZO-Mo-xYA"/>
                         <outlet property="cancelButton" destination="tGY-z3-uAa" id="FRZ-mK-Ac0"/>
                         <outlet property="imagePickerView" destination="NdK-Gw-Wmo" id="64s-6w-czE"/>
                         <outlet property="shareButton" destination="r9t-Tz-AJD" id="1mW-bn-hyr"/>
+                        <outlet property="toolbar" destination="EZj-Xl-lPG" id="xgj-CJ-lfp"/>
                         <outlet property="topNavBar" destination="z88-j1-efT" id="pUK-FM-Xqc"/>
                         <outlet property="topTextField" destination="bmD-ff-s6h" id="17h-Jq-idb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILU-ev-frL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89.5" y="118.5"/>
+            <point key="canvasLocation" x="88.799999999999997" y="118.29085457271366"/>
         </scene>
     </scenes>
 </document>
