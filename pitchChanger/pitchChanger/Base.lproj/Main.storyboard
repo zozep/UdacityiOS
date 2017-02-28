@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNf-ek-2VZ">
-                                <rect key="frame" x="143" y="74" width="126" height="119"/>
+                                <rect key="frame" x="143" y="228" width="126" height="119"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126" id="iFA-j2-8GA"/>
                                     <constraint firstAttribute="height" constant="119" id="ieH-xT-CjD"/>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EH9-bN-WqR">
-                                <rect key="frame" x="0.0" y="201" width="414" height="21"/>
+                                <rect key="frame" x="0.0" y="355" width="414" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mGS-Nv-5KO"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwf-Qy-8gd">
-                                <rect key="frame" x="162.66666666666666" y="262" width="89" height="92"/>
+                                <rect key="frame" x="162" y="416" width="89" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="4Oa-qi-8An"/>
                                     <constraint firstAttribute="width" constant="89" id="XZE-hM-B0g"/>
@@ -58,13 +58,17 @@
                         <constraints>
                             <constraint firstItem="EH9-bN-WqR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2zm-Q1-iAq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vwf-Qy-8gd" secondAttribute="bottom" constant="8" id="CB6-zA-9VW"/>
-                            <constraint firstItem="nNf-ek-2VZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="NFo-KO-Gxf"/>
+                            <constraint firstItem="nNf-ek-2VZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="NFo-KO-Gxf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="164"/>
+                            </constraint>
                             <constraint firstItem="nNf-ek-2VZ" firstAttribute="centerX" secondItem="EH9-bN-WqR" secondAttribute="centerX" constant="-1" id="O2e-Co-Qf9"/>
                             <constraint firstItem="Vwf-Qy-8gd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eY1-7W-PAj"/>
                             <constraint firstAttribute="trailing" secondItem="EH9-bN-WqR" secondAttribute="trailing" id="g6g-L2-lP4"/>
                             <constraint firstItem="Vwf-Qy-8gd" firstAttribute="top" secondItem="EH9-bN-WqR" secondAttribute="bottom" constant="40" id="uYT-T3-ehG"/>
                             <constraint firstItem="EH9-bN-WqR" firstAttribute="top" secondItem="nNf-ek-2VZ" secondAttribute="bottom" constant="8" id="upa-eL-et0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nNf-ek-2VZ" secondAttribute="trailing" constant="82" id="xSs-52-cIr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nNf-ek-2VZ" secondAttribute="trailing" constant="82" id="xSs-52-cIr">
+                                <variation key="heightClass=regular-widthClass=compact" constant="125"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HxS-AJ-qgP"/>
