@@ -20,6 +20,7 @@ class RecordSoundsVC: UIViewController, AVAudioRecorderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRecordingButtonUI()
         stopRecordingButton.isEnabled = false
     }
     
@@ -28,9 +29,16 @@ class RecordSoundsVC: UIViewController, AVAudioRecorderDelegate {
         print("viewWillAppear called")
         
     }
+    
+    func setupRecordingButtonUI() {
+        recordingButton.imageView?.contentMode = .scaleAspectFit
+        stopRecordingButton.imageView?.contentMode = .scaleAspectFit
+    }
+    
     func checkIfRecordingAndSwitchText() {
         recordingLabel.text = (stopRecordingButton.isEnabled) ? "Recording in progress" : "Tap to record"
     }
+    
     @IBAction func recordAudio(_ sender: Any) {
         stopRecordingButton.isEnabled = true
         recordingButton.isEnabled = false
