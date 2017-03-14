@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="iYZ-Mq-4iF">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="iYZ-Mq-4iF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Rock Paper Scissors View Controller-->
@@ -15,14 +19,14 @@
                         <viewControllerLayoutGuide type="bottom" id="fqQ-nG-h6S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uZk-oR-UzU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDr-vO-WkA">
-                                <rect key="frame" x="189" y="281" width="75" height="65"/>
+                                <rect key="frame" x="244" y="281" width="75" height="65"/>
                                 <state key="normal" image="scissors">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="makeYourMove:" destination="iYZ-Mq-4iF" eventType="touchUpInside" id="LHW-e4-IL1"/>
@@ -30,16 +34,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgh-U1-uLB">
-                                <rect key="frame" x="122" y="478" width="78" height="21"/>
+                                <rect key="frame" x="149" y="577" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ay7-rG-oQ3">
-                                <rect key="frame" x="123" y="171" width="75" height="65"/>
+                                <rect key="frame" x="150" y="171" width="75" height="65"/>
                                 <state key="normal" image="paper">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="makeYourMove:" destination="iYZ-Mq-4iF" eventType="touchUpInside" id="BZl-Sp-uVr"/>
@@ -49,18 +53,28 @@
                                 <rect key="frame" x="56" y="281" width="75" height="65"/>
                                 <state key="normal" image="rock">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="makeYourMove:" destination="iYZ-Mq-4iF" eventType="touchUpInside" id="fGy-X8-GSq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFy-t3-7iY">
+                                <rect key="frame" x="156" y="20" width="62" height="30"/>
+                                <state key="normal" title="History"/>
+                                <connections>
+                                    <action selector="showHistory:" destination="iYZ-Mq-4iF" eventType="touchUpInside" id="sBA-nc-2Hn"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gFy-t3-7iY" firstAttribute="leading" secondItem="uZk-oR-UzU" secondAttribute="leadingMargin" constant="140" id="7Qk-zb-WbA"/>
                             <constraint firstItem="Ay7-rG-oQ3" firstAttribute="centerX" secondItem="Fgh-U1-uLB" secondAttribute="centerX" id="ER3-Hd-3dl"/>
                             <constraint firstItem="Ay7-rG-oQ3" firstAttribute="centerX" secondItem="uZk-oR-UzU" secondAttribute="centerX" id="ShH-vH-V8s"/>
+                            <constraint firstItem="gFy-t3-7iY" firstAttribute="top" secondItem="HUJ-al-Ubx" secondAttribute="bottom" id="UwS-jZ-g9A"/>
                             <constraint firstItem="2pQ-vK-SEv" firstAttribute="leading" secondItem="uZk-oR-UzU" secondAttribute="leadingMargin" constant="40" id="Y4E-zJ-fsT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gFy-t3-7iY" secondAttribute="trailing" constant="141" id="ahR-FW-gj2"/>
                             <constraint firstItem="kDr-vO-WkA" firstAttribute="top" secondItem="Ay7-rG-oQ3" secondAttribute="bottom" constant="45" id="dDf-3F-LnF"/>
                             <constraint firstItem="kDr-vO-WkA" firstAttribute="top" secondItem="2pQ-vK-SEv" secondAttribute="top" id="gWe-ML-OrK"/>
                             <constraint firstItem="fqQ-nG-h6S" firstAttribute="top" secondItem="Fgh-U1-uLB" secondAttribute="bottom" constant="69" id="rK2-fH-g2c"/>
@@ -78,7 +92,87 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AH7-9D-0G1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373" y="141"/>
+            <point key="canvasLocation" x="372.5" y="140.5"/>
+        </scene>
+        <!--History VC-->
+        <scene sceneID="Z8N-o3-fpy">
+            <objects>
+                <viewController storyboardIdentifier="HistoryVC" id="yNG-mX-Q7b" userLabel="History VC" customClass="HistoryViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zy5-Uq-vRZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="xp4-v5-2o1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CiT-jS-1od">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lYF-zk-GPR">
+                                <rect key="frame" x="0.0" y="28" width="375" height="595"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" textLabel="XNY-81-TW8" detailTextLabel="Yvj-ug-eUd" style="IBUITableViewCellStyleValue1" id="WPw-Kk-Wea" userLabel="HistoryCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WPw-Kk-Wea" id="Ntm-kA-LsH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XNY-81-TW8">
+                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yvj-ug-eUd">
+                                                    <rect key="frame" x="316" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="yNG-mX-Q7b" id="gGi-2a-ZQ6"/>
+                                    <outlet property="delegate" destination="yNG-mX-Q7b" id="26T-Yz-MaU"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkh-0q-Rl2">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Wcg-H9-d3F"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="OK" id="nC2-Ia-ma1">
+                                        <connections>
+                                            <action selector="dismissHistory:" destination="yNG-mX-Q7b" id="Wce-Us-Rg4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fkh-0q-Rl2" firstAttribute="top" secondItem="lYF-zk-GPR" secondAttribute="bottom" id="2ng-2l-irJ"/>
+                            <constraint firstItem="lYF-zk-GPR" firstAttribute="leading" secondItem="CiT-jS-1od" secondAttribute="leading" id="8jP-UJ-rKM"/>
+                            <constraint firstItem="fkh-0q-Rl2" firstAttribute="leading" secondItem="CiT-jS-1od" secondAttribute="leading" id="JP1-fi-DSs"/>
+                            <constraint firstItem="xp4-v5-2o1" firstAttribute="top" secondItem="fkh-0q-Rl2" secondAttribute="bottom" id="MDi-ZZ-l38"/>
+                            <constraint firstAttribute="trailing" secondItem="fkh-0q-Rl2" secondAttribute="trailing" id="dvA-Xc-Ugp"/>
+                            <constraint firstAttribute="trailing" secondItem="lYF-zk-GPR" secondAttribute="trailing" id="f1E-vJ-Ceo"/>
+                            <constraint firstItem="xp4-v5-2o1" firstAttribute="top" secondItem="lYF-zk-GPR" secondAttribute="bottom" constant="44" id="gBi-eb-NeZ"/>
+                            <constraint firstItem="lYF-zk-GPR" firstAttribute="top" secondItem="CiT-jS-1od" secondAttribute="top" constant="28" id="vDu-U5-4Ml"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="lYF-zk-GPR" id="5UK-5N-UuU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lzf-zb-QqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="391" y="930"/>
         </scene>
         <!--ResultViewController-->
         <scene sceneID="1ng-f0-WIA">
@@ -89,26 +183,26 @@
                         <viewControllerLayoutGuide type="bottom" id="mrR-ne-40c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="H5x-BJ-0Ft">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock-paper-scissors1" translatesAutoresizingMaskIntoConstraints="NO" id="rqm-mq-mTN">
-                                <rect key="frame" x="60" y="104" width="200" height="200"/>
+                                <rect key="frame" x="60" y="104" width="255" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="nsg-LM-Dyx"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkQ-nF-AKs">
-                                <rect key="frame" x="110" y="500" width="100" height="30"/>
+                                <rect key="frame" x="110" y="599" width="155" height="30"/>
                                 <state key="normal" title="Play Again">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonPressed:" destination="7l5-Gp-aIR" eventType="touchUpInside" id="46N-a5-3vb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HM4-MI-r2M">
-                                <rect key="frame" x="70" y="352" width="180" height="42"/>
+                                <rect key="frame" x="70" y="352" width="235" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="5w0-No-sVb"/>
                                 </constraints>
@@ -117,7 +211,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rqm-mq-mTN" firstAttribute="centerX" secondItem="HM4-MI-r2M" secondAttribute="centerX" id="2U2-ye-F4t"/>
                             <constraint firstItem="HM4-MI-r2M" firstAttribute="leading" secondItem="H5x-BJ-0Ft" secondAttribute="leadingMargin" constant="54" id="370-LM-rmS"/>
@@ -148,6 +242,11 @@
         <image name="rock-paper-scissors1" width="460" height="276"/>
         <image name="scissors" width="75" height="65"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Ih9-HG-qHO"/>
     </inferredMetricsTieBreakers>
