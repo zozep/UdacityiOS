@@ -1,26 +1,156 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="k3Z-c8-m1n">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="GRh-mf-YcZ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Anw-0l-o2m" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="Mvh-Ji-b8g"/>
+                        <viewControllerLayoutGuide type="bottom" id="C5N-o0-Emi"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="7F7-2R-tOD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vN5-yo-f4f">
+                                <rect key="frame" x="0.0" y="64" width="375" height="283"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsA-8D-FI5">
+                                <rect key="frame" x="16" y="390" width="343" height="11"/>
+                                <state key="normal" title="Leap through the door and roar!"/>
+                                <connections>
+                                    <segue destination="ENP-Fw-vh7" kind="show" id="j3e-RB-Fn4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Foj-1B-9Xn">
+                                <rect key="frame" x="16" y="487" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rjd-xS-aTW"/>
+                                </constraints>
+                                <state key="normal" title="Stalk to the door and peek down the hallway"/>
+                                <connections>
+                                    <segue destination="yws-I0-iRE" kind="show" id="ZJl-7Q-k5c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MsA-8D-FI5" secondAttribute="trailing" id="24c-BP-sex"/>
+                            <constraint firstItem="C5N-o0-Emi" firstAttribute="top" secondItem="Foj-1B-9Xn" secondAttribute="bottom" constant="150" id="44M-4q-lAh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Foj-1B-9Xn" secondAttribute="trailing" id="5Po-yN-gHg"/>
+                            <constraint firstItem="MsA-8D-FI5" firstAttribute="leading" secondItem="7F7-2R-tOD" secondAttribute="leadingMargin" id="7KG-Yo-vd0"/>
+                            <constraint firstItem="Foj-1B-9Xn" firstAttribute="leading" secondItem="7F7-2R-tOD" secondAttribute="leadingMargin" id="7S2-0M-kEk"/>
+                            <constraint firstItem="MsA-8D-FI5" firstAttribute="top" secondItem="Mvh-Ji-b8g" secondAttribute="bottom" constant="326" id="86D-Il-k51"/>
+                            <constraint firstAttribute="trailing" secondItem="vN5-yo-f4f" secondAttribute="trailing" id="BJj-DG-tH9"/>
+                            <constraint firstItem="vN5-yo-f4f" firstAttribute="top" secondItem="Mvh-Ji-b8g" secondAttribute="bottom" id="CQj-i7-eDD"/>
+                            <constraint firstItem="Foj-1B-9Xn" firstAttribute="top" secondItem="MsA-8D-FI5" secondAttribute="bottom" constant="86" id="svZ-XC-yUs"/>
+                            <constraint firstItem="vN5-yo-f4f" firstAttribute="leading" secondItem="7F7-2R-tOD" secondAttribute="leading" id="tai-rB-MoC"/>
+                            <constraint firstItem="C5N-o0-Emi" firstAttribute="top" secondItem="vN5-yo-f4f" secondAttribute="bottom" constant="320" id="z92-lD-ZGB"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Gyl-RC-6b5"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TQn-VH-pFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="365.60000000000002" y="311.69415292353824"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wgT-Zd-ao4">
+            <objects>
+                <navigationController id="k3Z-c8-m1n" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Zg-A9-Ies">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Anw-0l-o2m" kind="relationship" relationship="rootViewController" id="XVY-zQ-Z3X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jld-e6-6iM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="312"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0Kl-XC-IlB">
+            <objects>
+                <viewController id="yws-I0-iRE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NYS-eE-u5K"/>
+                        <viewControllerLayoutGuide type="bottom" id="v5Y-J3-zGB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ME-dT-nD8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You chose to stalk to the door and peek" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Ki-M7-Uxg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="283"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.97691888969999996" green="1" blue="0.99625176569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Ki-M7-Uxg" firstAttribute="leading" secondItem="2ME-dT-nD8" secondAttribute="leading" id="0cR-qU-2jL"/>
+                            <constraint firstItem="v5Y-J3-zGB" firstAttribute="top" secondItem="4Ki-M7-Uxg" secondAttribute="bottom" constant="320" id="XGt-YM-Q8A"/>
+                            <constraint firstAttribute="trailing" secondItem="4Ki-M7-Uxg" secondAttribute="trailing" id="Za8-vz-iRu"/>
+                            <constraint firstItem="4Ki-M7-Uxg" firstAttribute="top" secondItem="NYS-eE-u5K" secondAttribute="bottom" id="cCF-zH-kNh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2z5-Uy-4f1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ent-GC-ZPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1190" y="1091"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lw0-Q8-lgo">
+            <objects>
+                <viewController id="ENP-Fw-vh7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KSF-6A-p7u"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Ta-ab-xEa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Wd-g8-lmL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You chose to leap through the door" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F6Q-YZ-7iU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="283"/>
+                                <color key="backgroundColor" red="1" green="0.58403862849999999" blue="0.72322591150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.97691888969999996" green="1" blue="0.99625176569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Ta-ab-xEa" firstAttribute="top" secondItem="F6Q-YZ-7iU" secondAttribute="bottom" constant="320" id="3LE-t3-0ts"/>
+                            <constraint firstItem="F6Q-YZ-7iU" firstAttribute="top" secondItem="KSF-6A-p7u" secondAttribute="bottom" id="JuK-iO-fL8"/>
+                            <constraint firstAttribute="trailing" secondItem="F6Q-YZ-7iU" secondAttribute="trailing" id="K21-uM-MEf"/>
+                            <constraint firstItem="F6Q-YZ-7iU" firstAttribute="leading" secondItem="4Wd-g8-lmL" secondAttribute="leading" id="PJi-qv-Mje"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mcl-3b-Jm1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r4z-Mq-Si0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1190" y="349"/>
         </scene>
     </scenes>
 </document>
