@@ -6,6 +6,7 @@
 //  Copyright © 2017 Gabrielle Miller-Messner. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -24,7 +25,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: [indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath)
         
         let match = self.history[indexPath.row]
         
