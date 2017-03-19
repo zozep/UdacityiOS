@@ -49,9 +49,11 @@ class RootTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        let adventure = adventures[(indexPath as NSIndexPath).row]
+        let adventure = adventures[indexPath.row]
+        
         cell.textLabel!.text = adventure.credits.title
         cell.detailTextLabel!.text = adventure.credits.author
+        
         let imageName = adventure.credits.imageName
         cell.imageView!.image = UIImage(named: imageName!)
                 
@@ -61,13 +63,13 @@ class RootTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Get the selected adventure
-        let selectedAdventure = adventures[(indexPath as NSIndexPath).row]
+        let selectedAdventure = adventures[indexPath.row]
         
         // Get the first node
         let firstNodeInTheAdventure = selectedAdventure.startNode
 
         // Get a StoryNodeController from the Storyboard
-        let storyNodeController = self.storyboard!.instantiateViewController(withIdentifier: "StoryNodeViewController")as! StoryNodeViewController
+        let storyNodeController = self.storyboard!.instantiateViewController(withIdentifier: "StoryNodeViewController") as! StoryNodeViewController
         
         // Set the story node so that we will see the start of the story
         storyNodeController.storyNode = firstNodeInTheAdventure

@@ -46,7 +46,6 @@ struct StoryNode {
     }
     
     // The prompt string, these will be something like: "Open the door, and look inside"
-    
     func promptForIndex(_ index: Int) -> String {
         return connections[index].prompt
     }
