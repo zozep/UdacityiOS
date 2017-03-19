@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "VillainCell")!
-        let villain = self.allVillains[(indexPath as NSIndexPath).row]
+        let villain = self.allVillains[indexPath.row]
         
         // Set the name and image
         cell.textLabel?.text = villain.name
@@ -40,8 +40,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
-
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = self.storyboard!.instantiateViewController(withIdentifier: "VillainDetailsVC") as! VillainDetailsVC
+        
+        detailVC.villain = self.allVillains[indexPath.row]
+        self.navigationController!.pushViewController(detailVC, animated: true)
     }
 }
