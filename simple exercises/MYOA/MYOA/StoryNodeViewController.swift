@@ -49,6 +49,7 @@ class StoryNodeViewController: UIViewController, UITableViewDelegate, UITableVie
         let nextStoryNode = storyNode.storyNodeForIndex(index: indexPath.row)
         let storyNodeViewController = self.storyboard!.instantiateViewController(withIdentifier: "StoryNodeViewController") as! StoryNodeViewController
         storyNodeViewController.storyNode = nextStoryNode
+        
         self.navigationController!.pushViewController(storyNodeViewController, animated: true)
     }
     

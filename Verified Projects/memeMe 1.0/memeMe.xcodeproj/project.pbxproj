@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C282EE71E80E37500A1EC0C /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C282EE61E80E37500A1EC0C /* MemeCollectionViewController.swift */; };
 		7CA74D551E5AA69A00D485AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA74D541E5AA69A00D485AD /* AppDelegate.swift */; };
 		7CA74D571E5AA69A00D485AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA74D561E5AA69A00D485AD /* ViewController.swift */; };
 		7CA74D5A1E5AA69A00D485AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA74D581E5AA69A00D485AD /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C282EE61E80E37500A1EC0C /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
 		7CA74D511E5AA69A00D485AD /* memeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA74D541E5AA69A00D485AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA74D561E5AA69A00D485AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				7CA74D541E5AA69A00D485AD /* AppDelegate.swift */,
 				7CA74D661E5EFDF200D485AD /* Meme.swift */,
 				7CA74D561E5AA69A00D485AD /* ViewController.swift */,
+				7C282EE61E80E37500A1EC0C /* MemeCollectionViewController.swift */,
 				7CA74D581E5AA69A00D485AD /* Main.storyboard */,
 				7CA74D5B1E5AA69A00D485AD /* Assets.xcassets */,
 				7CA74D5D1E5AA69A00D485AD /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C282EE71E80E37500A1EC0C /* MemeCollectionViewController.swift in Sources */,
 				7CA74D671E5EFDF200D485AD /* Meme.swift in Sources */,
 				7CA74D571E5AA69A00D485AD /* ViewController.swift in Sources */,
 				7CA74D551E5AA69A00D485AD /* AppDelegate.swift in Sources */,
