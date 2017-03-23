@@ -47,4 +47,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         detailController.villain = self.allVillains[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(detailController, animated: true)
     }
+
 }

@@ -28,4 +28,9 @@ class VillainDetailViewController: UIViewController {
         self.label.text = self.villain.name
         self.imageView!.image = UIImage(named: villain.imageName)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        
+    }
 }
