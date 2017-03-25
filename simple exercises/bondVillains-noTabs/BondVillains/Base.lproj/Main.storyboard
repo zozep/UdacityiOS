@@ -127,9 +127,8 @@
         <!--Villain Collection View Controller-->
         <scene sceneID="T17-1x-c4n">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CtR-ON-MIi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="pWb-mF-MQU" customClass="VillainCollectionViewController" customModule="BondVillains" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="guJ-lq-IN2">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="guJ-lq-IN2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,7 +162,6 @@
                                 <connections>
                                     <outlet property="VillainImageView" destination="PY2-Yh-nHj" id="hnE-ch-7p2"/>
                                     <outlet property="nameLabel" destination="OCM-Cu-pH9" id="aUQ-OJ-ndz"/>
-                                    <outlet property="villainName" destination="OCM-Cu-pH9" id="SHQ-FG-JnK"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -174,6 +172,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="Ihn-Ls-rXm"/>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CtR-ON-MIi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="890" y="-912"/>
         </scene>
