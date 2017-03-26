@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var toolbar: UIToolbar!
     
     let picker = UIImagePickerController()
-
+    let meme = Meme()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -35,6 +35,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         configureTextField(textField: topTextField)
         configureTextField(textField: bottomTextField)
+        
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
