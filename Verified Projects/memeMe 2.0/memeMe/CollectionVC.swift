@@ -23,7 +23,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
-        //collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
     override func viewDidLoad() {
@@ -43,14 +43,20 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     
     //MARK: CollectionView delegate methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        let meme = memes[indexPath.item]
+        cell.memeImg.image = meme.memedImage
+        
+        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "DetailMemeVC") as! DetailMemeVC
+        controller.name = self.memes[indexPath.item]
+        self.navigationController!.pushViewController(controller, animated: true)
     }
 }
