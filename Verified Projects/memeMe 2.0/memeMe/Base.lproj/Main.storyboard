@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z4I-Y8-CNp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z4I-Y8-CNp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,8 +20,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QAt-GJ-MXY" kind="relationship" relationship="viewControllers" id="Zks-4z-yeJ"/>
-                        <segue destination="hA7-uf-cX7" kind="relationship" relationship="viewControllers" id="zR2-8I-MGw"/>
+                        <segue destination="hA7-uf-cX7" kind="relationship" relationship="viewControllers" id="aMe-xb-LV0"/>
+                        <segue destination="QAt-GJ-MXY" kind="relationship" relationship="viewControllers" id="4gd-53-wZm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVa-GN-MNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Obi-zS-V51" kind="relationship" relationship="rootViewController" id="Dwx-65-YqU"/>
+                        <segue destination="Obi-zS-V51" kind="relationship" relationship="rootViewController" id="aOG-mG-37s"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqp-7x-iLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,7 +49,7 @@
         <scene sceneID="gHL-4D-f8u">
             <objects>
                 <collectionViewController title="CollectionVC" id="Obi-zS-V51" customClass="CollectionVC" customModule="memeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="SFN-Km-d48">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SFN-Km-d48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,13 +73,13 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="centerY" secondItem="q1b-xZ-PGl" secondAttribute="centerY" id="4Tt-UC-OqG"/>
-                                    <constraint firstAttribute="trailing" secondItem="zIC-9k-8nD" secondAttribute="trailing" constant="4" id="9JM-bx-k7f"/>
-                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="leading" secondItem="q1b-xZ-PGl" secondAttribute="leading" constant="4" id="ZM6-wA-SeR"/>
-                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="top" secondItem="q1b-xZ-PGl" secondAttribute="topMargin" constant="-3" id="jhK-XW-MeV"/>
+                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="centerY" secondItem="q1b-xZ-PGl" secondAttribute="centerY" id="7hU-YG-rBr"/>
+                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="leading" secondItem="q1b-xZ-PGl" secondAttribute="leadingMargin" constant="-4" id="Mid-rb-Eag"/>
+                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="top" secondItem="q1b-xZ-PGl" secondAttribute="topMargin" constant="-3" id="e0D-e2-xeW"/>
+                                    <constraint firstItem="zIC-9k-8nD" firstAttribute="centerX" secondItem="q1b-xZ-PGl" secondAttribute="centerX" id="kl9-hW-IrM"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="memeImg" destination="zIC-9k-8nD" id="upv-sZ-Ee1"/>
+                                    <outlet property="memeImg" destination="zIC-9k-8nD" id="ePX-uH-r3R"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -218,13 +218,20 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XMU-NJ-cl0" id="CPh-OY-ju5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2T-pL-buY">
                                             <rect key="frame" x="8" y="3" width="123" height="101"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xc-o7-qfX">
+                                            <rect key="frame" x="139" y="22" width="228" height="63"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -241,7 +248,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pI7-Wh-wDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4290" y="-126"/>
+            <point key="canvasLocation" x="-4290.3999999999996" y="-126.38680659670166"/>
         </scene>
         <!--TableViewController-->
         <scene sceneID="XVg-G3-DPK">
@@ -253,7 +260,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="CXM-1R-t7h" kind="relationship" relationship="rootViewController" id="3Ce-Ri-b45"/>
+                        <segue destination="CXM-1R-t7h" kind="relationship" relationship="rootViewController" id="1ny-Ft-J9y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8h-KV-wYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,7 +270,7 @@
         <!--DetailMemeVC-->
         <scene sceneID="G7l-hc-thP">
             <objects>
-                <viewController storyboardIdentifier="DetailMemeVC" id="J7D-XL-YPt" userLabel="DetailMemeVC" customClass="DetailMemeVC" customModule="MeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailMemeVC" id="J7D-XL-YPt" userLabel="DetailMemeVC" customClass="DetailMemeVC" customModule="memeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uBo-tm-Nr8"/>
                         <viewControllerLayoutGuide type="bottom" id="e5d-36-3LQ"/>

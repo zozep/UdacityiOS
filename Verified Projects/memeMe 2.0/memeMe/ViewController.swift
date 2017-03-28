@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var toolbar: UIToolbar!
     
     let picker = UIImagePickerController()
-    let meme = Meme()
+    var memeSentFromMain: Meme?
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -39,6 +39,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let memeFromDetail = memeSentFromMain as Meme! {
+            imagePickerView.image = memeFromDetail.image
+        }
        
         // if there's an image in the imageView, enable the share button
         if let _ = imagePickerView.image {
@@ -77,6 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Render View To An Image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -89,13 +94,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         // Create The Meme
-        let imageView = UIImageView()
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image, memedImage: memedImage)
+        let memedImage = generateMemedImage()
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image, memedImage: memedImage)
+        
+        //TODO: Add to memes array in AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
 
         
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        topTextField.isHidden = true
+        bottomTextField.isHidden = true
         
     }
 

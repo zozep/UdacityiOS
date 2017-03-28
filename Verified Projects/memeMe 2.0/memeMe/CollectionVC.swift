@@ -56,7 +56,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "DetailMemeVC") as! DetailMemeVC
-        controller.name = self.memes[indexPath.item]
+        controller.meme = self.memes[indexPath.item]
         self.navigationController!.pushViewController(controller, animated: true)
     }
 }

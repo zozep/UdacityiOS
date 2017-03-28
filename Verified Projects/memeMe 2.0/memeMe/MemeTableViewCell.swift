@@ -9,8 +9,7 @@
 import UIKit
 
 class MemeTableViewCell: UITableViewCell {
-    
+    @IBOutlet var memeImg: UIImageView!
     @IBOutlet weak var memeLabel: UILabel!
-    @IBOutlet weak var memeImg: UIImageView!
     
 }

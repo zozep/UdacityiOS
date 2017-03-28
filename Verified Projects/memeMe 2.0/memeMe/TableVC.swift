@@ -18,12 +18,6 @@ class TableVC: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
 
     // MARK: - Table view data source
 
@@ -45,7 +39,7 @@ class TableVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let memeView = self.storyboard?.instantiateViewController(withIdentifier: "DetailMemeVC") as! DetailMemeVC
-        memeView.name = self.memes[indexPath.row]
+        memeView.meme = self.memes[indexPath.row]
         self.navigationController?.pushViewController(memeView, animated: true)
     }
 
