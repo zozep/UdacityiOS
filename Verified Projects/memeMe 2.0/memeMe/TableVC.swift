@@ -14,6 +14,7 @@ class TableVC: UITableViewController {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()

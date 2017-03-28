@@ -22,7 +22,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
     
-    let picker = UIImagePickerController()
     var memeSentFromMain: Meme?
     
     override var prefersStatusBarHidden: Bool {
@@ -97,14 +96,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image, memedImage: memedImage)
         
-        //TODO: Add to memes array in AppDelegate
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
 
-        
-        topTextField.isHidden = true
-        bottomTextField.isHidden = true
-        
     }
 
     //MARK: Album
@@ -160,8 +155,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeTextAttributes:[String:Any] = [
             NSStrokeColorAttributeName: UIColor.black,
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: -4] as [String : Any]
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, NSStrokeWidthAttributeName: -4] as [String : Any]
         
         topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: memeTextAttributes)
         bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: memeTextAttributes)
@@ -231,6 +225,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         self.imagePickerView.image = nil
+        dismiss(animated: true, completion: nil)
+
     }
     
 
