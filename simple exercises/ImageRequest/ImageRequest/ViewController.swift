@@ -21,6 +21,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: Add all the networking code here!
+        let imageURL = URL(string: "http://www.puppiesden.com/pics/1/poodle-puppy2.jpg")
+        
+        let task = URLSession.shared.dataTask(with: imageURL!) { (data, response, error) in
+        
+            if error == nil {
+                let downloadedImage = UIImage(data: data!)
+                
+                performUIUpdatesOnMain {
+                    self.imageView.image = downloadedImage
+                }
+            }
+        }
+        task.resume()
     }
 }
