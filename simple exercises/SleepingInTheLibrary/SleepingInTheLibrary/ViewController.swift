@@ -53,8 +53,8 @@ class ViewController: UIViewController {
         let urlString = Constants.Flickr.APIBaseURL + escapedParameters(parameters: methodParameters as [String:AnyObject])
         let url = URL(string: urlString)!
         let request = URLRequest(url: url)
-        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
             func displayError(_ error: String) {
                 print(error)
                 print("URL at time of error: \(url)")
@@ -62,8 +62,10 @@ class ViewController: UIViewController {
                     self.setUIEnabled(true)
                 }
             }
-        
+            //no error
             if error == nil {
+                
+                //data is returned
                 if let data = data {
                     let parsedResult: [String: AnyObject]!
                 
@@ -73,7 +75,25 @@ class ViewController: UIViewController {
                         displayError("Could not parse the data as JSON: '(data)'")
                         return
                     }
-                    print(parsedResult)
+                    
+                    //deserializing
+                    if let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String: AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String: AnyObject]] {
+                        
+                        let randomPhotoIndex = Int(arc4random_uniform(UInt32(photoArray.count)))
+                        let photoDictionary = photoArray[randomPhotoIndex] as [String:AnyObject]
+                        
+                        if let imageURLString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String, let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String {
+                           
+                            let imageURL = URL(string: imageURLString)
+                            if let imageData = try? Data(contentsOf: imageURL!) {
+                                performUIUpdatesOnMain {
+                                    self.photoImageView.image = UIImage(data: imageData)
+                                    self.photoTitleLabel.text = photoTitle
+                                    self.setUIEnabled(true)
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
