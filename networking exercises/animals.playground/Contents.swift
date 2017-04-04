@@ -18,16 +18,22 @@ var rawAnimalsJSON = try? Data(contentsOf: URL(fileURLWithPath: pathForAnimalsJS
 var parsingAnimalsError: Error? = nil
 
 /* Parse the data into usable form */
-var parsedAnimalsJSON = try! JSONSerialization.jsonObject(with: rawAnimalsJSON!, options: .allowFragments) as! Dictionary
-
+var parsedAnimalsJSON = try! JSONSerialization.jsonObject(with: rawAnimalsJSON!, options: .allowFragments) as! Dictionary<String, Any>
 func parseJSONAsDictionary(_ dictionary: Dictionary) {
+   
     /* Start playing with JSON here... */
-    guard let photoDictionary = parsedAnimalsJSON["photos"] as? Dictionary else {
-        print("error, can't find key 'photos' in \(parsedAnimalJSON)")
+    guard let photoDictionary = parsedAnimalsJSON["photos"] as? Dictionary <String, Any> else {
+        print("error, can't find key 'photos' in \(parsedAnimalsJSON)")
         return
     }
     
+    guard let totalNumberOfAnimalsPhotos = photoDictionary["total"] as? Int else {
+        print("cannot find key 'total' in \(photoDictionary)")
+        return
+    }
+    
+    /* How many photos are in the JSON data set? */
+    print(totalNumberOfAnimalsPhotos)
+    
     
 }
-
-parseJSONAsDictionary(parsedAnimalsJSON)
