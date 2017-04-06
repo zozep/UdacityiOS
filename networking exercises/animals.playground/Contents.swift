@@ -19,7 +19,7 @@ var parsingAnimalsError: Error? = nil
 
 /* Parse the data into usable form */
 var parsedAnimalsJSON = try! JSONSerialization.jsonObject(with: rawAnimalsJSON!, options: .allowFragments) as! Dictionary<String, Any>
-func parseJSONAsDictionary(_ dictionary: Dictionary) {
+func parseJSONAsDictionary(_ dictionary: Dictionary<String, Any>) {
    
     /* Start playing with JSON here... */
     guard let photoDictionary = parsedAnimalsJSON["photos"] as? Dictionary <String, Any> else {
@@ -35,5 +35,15 @@ func parseJSONAsDictionary(_ dictionary: Dictionary) {
     /* How many photos are in the JSON data set? */
     print(totalNumberOfAnimalsPhotos)
     
+    guard let arrayOfPhotosDictionaries = photoDictionary["photo"] as? [[String: AnyObject]] else {
+        print("Can't find key 'comment' in \(photoDictionary)")
+        return
+    }
     
+    for (index, photo) in arrayOfPhotosDictionaries.enumerated() {
+        guard let commentDict = photo["comment"] as? [String: AnyObject] else {
+            print("cant find 'comment in \(photo)")
+            return
+        }
+    }
 }
