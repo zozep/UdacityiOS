@@ -45,5 +45,22 @@ func parseJSONAsDictionary(_ dictionary: Dictionary<String, Any>) {
             print("cant find 'comment in \(photo)")
             return
         }
+        
+        guard let content = commentDict["_content"] as? String else {
+            print("cant find key '_content' in \(commentDict)")
+            return
+        }
+        
+        /* What is the array index of the photo that has content containing the text "interrufftion"? */
+        if content.range(of: "interrufftion") != nil {
+            print(index)
+        }
+        
+        /* For the third photo in the array of photos, what animal is shown? */
+        if let photoURL = photo["url_m"] as? String, index == 2 {
+            print(photoURL)
+        }
     }
 }
+
+parseJSONAsDictionary(parsedAnimalsJSON)
