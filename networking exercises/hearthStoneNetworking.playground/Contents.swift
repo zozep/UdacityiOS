@@ -12,13 +12,28 @@ var pathForHearthstoneJSON = Bundle.main.path(forResource: "hearthstone", ofType
 var rawHearthstoneJSON = try? Data(contentsOf: URL(fileURLWithPath: pathForHearthstoneJSON!))
 
 /* Error object */
-var parsingHearthstoneError: NSError? = nil
+var parsingHearthstoneError: Error? = nil
 
 /* Parse the data into usable form */
-var parsedHearthstoneJSON = try! JSONSerialization.jsonObject(with: rawHearthstoneJSON!, options: .allowFragments) as! NSDictionary
+var parsedHearthstoneJSON = try! JSONSerialization.jsonObject(with: rawHearthstoneJSON!, options: .allowFragments) as! Dictionary<String, Any>
 
-func parseJSONAsDictionary(_ dictionary: NSDictionary) {
-    /* Start playing with JSON here... */
+func parseJSONAsDictionary(_ dictionary: Dictionary<String, Any>) {
+    
+    var numCostRatioItems = 0
+    var sumCostRatio = 0.0
+    
+    var numCostForRarityItemsDict = [String: Int]()
+    var sumCostForRarityDict = [String: Int]()
+    
+    let rarities = ["Free", "Common"]
+    
+    for rarity in rarities {
+        numCostForRarityItemsDict[rarity] = 0
+        sumCostForRarityDict[rarity] = 0
+    }
+    
+    guard let arrayOfBasicSetCardDicts = parsedHearthstoneJSON["Basic"] as? [[String:AnyObject]] else {
+        print("Cannot find key 'Basic' in \(parsedHearthstoneJSON)")
+        return
+    }
 }
-
-parseJSONAsDictionary(parsedHearthstoneJSON)
