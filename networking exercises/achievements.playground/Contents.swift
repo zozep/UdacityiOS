@@ -20,7 +20,8 @@ var parsingAchivementsError: Error? = nil
 var parsedAchievementsJSON = try! JSONSerialization.jsonObject(with: rawAchievementsJSON!, options: .allowFragments) as! Dictionary<String, Any>
 
 func parseJSONAsDictionary(_ dictionary: Dictionary<String, Any>) {
-    /* Start playing with JSON here... */
+    /* Get top level dictionaries for achievements and categories */
+    
 }
 
-parseJSONAsDictionary(parsedAchievementsJSON)
+//parseJSONAsDictionary(parsedAchievementsJSON)
