@@ -110,10 +110,19 @@ class ViewController: UIViewController {
     }
     
     private func displayImageFromFlickrBySearch(_ methodParameters: [String: AnyObject]) {
+        //print(flickrURLFromParameters(methodParameters))
         
-        print(flickrURLFromParameters(methodParameters))
+        let session = URLSession.shared
+        let request = URLRequest(url: flickrURLFromParameters(methodParameters))
         
-        // TODO: Make request to Flickr!
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if error == nil {
+                print(data)
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        task.resume()
     }
     
     // MARK: Helper for Creating a URL from Parameters
