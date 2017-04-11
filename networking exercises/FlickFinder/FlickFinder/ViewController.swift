@@ -109,7 +109,11 @@ class ViewController: UIViewController {
         }
     }
     
-    private func displayImageFromFlickrBySearch(_ methodParameters: [String: AnyObject]) {
+    private func displayImageFromFlickrBySearch(_ methodParameters: [String: AnyObject], withPageNumber: Int) {
+        
+        //add the page to the method's parameters
+        var methodParametersWithPageNumber = methodParameters
+        methodParametersWithPageNumber[Constants.FlickrParameterKeys.Page] = withPageNumber as AnyObject?
         
         //create session and request
         let session = URLSession.shared
@@ -176,7 +180,9 @@ class ViewController: UIViewController {
             }
             
             //pick a random page!
-            
+            let pageLimit = min(totalPages, 40)
+            let randomPage = Int(arc4random_uniform(UInt32(pageLimit))) + 1
+            self.displayImageFromFlickrBySearch(methodParameters, withPageNumber: randomPage)
             
         }
         task.resume()
