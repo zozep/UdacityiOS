@@ -110,16 +110,68 @@ class ViewController: UIViewController {
     }
     
     private func displayImageFromFlickrBySearch(_ methodParameters: [String: AnyObject]) {
-        //print(flickrURLFromParameters(methodParameters))
         
+        //create session and request
         let session = URLSession.shared
         let request = URLRequest(url: flickrURLFromParameters(methodParameters))
         
+        //create network request
         let task = session.dataTask(with: request) { (data, response, error) in
-            if error == nil {
-                print(data)
-            } else {
-                print(error!.localizedDescription)
+            
+            //if an error occurs, print it and re-enable the UI
+            func displayError(_ error: String) {
+                print(error)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.photoTitleLabel.text = "No photo returned try again"
+                    self.photoImageView.image = nil
+                }
+            }
+        
+            //was there an error?
+            guard (error == nil) else {
+                displayError("There was an error with your request \(error)")
+                return
+            }
+            
+            //was there any data returned?
+            guard let data = data else {
+                displayError("No data was returned by the request")
+                return
+            }
+            
+            //did we get the successful 2xx response?
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                    displayError("Your requests returned a status code other than 2xx")
+                    return
+            }
+            
+            //parse the data
+            let parsedResult: [String:AnyObject]!
+
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: AnyObject]
+                print(parsedResult)
+            } catch {
+                displayError("could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            //did flickr return an error (stat != ok)?
+            guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String, stat == Constants.FlickrResponseValues.OKStatus else {
+                displayError("Flickr API returned an error. see error code and message in \(parsedResult)")
+                return
+            }
+            
+            //is "photos" key in our result?
+            guard let photoDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String: AnyObject] else {
+                displayError("Can't find keys '\(Constants.FlickrResponseKeys.Photos)' in '\(parsedResult)'")
+                return
+            }
+            
+            guard let totalPages = photoDictionary[Constants.FlickrResponseKeys.Pages] as? Int else {
+                displayError("Can't find key '\(Constants.FlickrResponseKeys.Pages)' in \(photoDictionary)")
+                return
             }
         }
         task.resume()
