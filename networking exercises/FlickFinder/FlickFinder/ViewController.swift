@@ -164,15 +164,20 @@ class ViewController: UIViewController {
             }
             
             //is "photos" key in our result?
-            guard let photoDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String: AnyObject] else {
+            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String: AnyObject] else {
                 displayError("Can't find keys '\(Constants.FlickrResponseKeys.Photos)' in '\(parsedResult)'")
                 return
             }
             
-            guard let totalPages = photoDictionary[Constants.FlickrResponseKeys.Pages] as? Int else {
-                displayError("Can't find key '\(Constants.FlickrResponseKeys.Pages)' in \(photoDictionary)")
+            //is "pages" key in the photosDictionary?
+            guard let totalPages = photosDictionary[Constants.FlickrResponseKeys.Pages] as? Int else {
+                displayError("Can't find key '\(Constants.FlickrResponseKeys.Pages)' in \(photosDictionary)")
                 return
             }
+            
+            //pick a random page!
+            
+            
         }
         task.resume()
     }
