@@ -98,7 +98,15 @@ class ViewController: UIViewController {
     // MARK: Flickr API
     
     private func bboxString() -> String {
-        
+        if let latitude = Double(latitudeTextField.text!), let longitude = Double(longitudeTextField.text!) {
+            let minimumLon = max(longitude - Constants.Flickr.SearchBBoxHalfWidth, Constants.Flickr.SearchLonRange.0)
+            let minimumLat = max(latitude - Constants.Flickr.SearchBBoxHalfHeight, Constants.Flickr.SearchLatRange.0)
+            let maximumLon = min(longitude + Constants.Flickr.SearchBBoxHalfWidth, Constants.Flickr.SearchLonRange.1)
+            let maximumLat = min(latitude + Constants.Flickr.SearchBBoxHalfHeight, Constants.Flickr.SearchLatRange.1)
+            return "\(minimumLon),\(minimumLat),\(maximumLon),\(maximumLat)"
+        } else {
+            return "0, 0, 0, 0"
+        }
     }
     
     private func displayImageFromFlickrBySearch(_ methodParameters: [String: AnyObject]) {
