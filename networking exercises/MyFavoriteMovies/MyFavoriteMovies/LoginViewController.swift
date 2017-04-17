@@ -99,7 +99,35 @@ class LoginViewController: UIViewController {
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTask(with: request) { (data, response, error) in
             
+            //if an error occurs, print it and re-enable the UI
+            func displayError(_ error: String) {
+                print(error)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.debugTextLabel.text = "Login Failed (REQUEST TOKEN)."
+                }
+            }
+            
+            //was there an error?
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(error)")
+                return
+            }
+            
+            //did we get a successful 2xx response?
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            //was there any data returned?
+            guard let data = data else {
+                displayError("There was no data returned by the request!")
+                return
+            }
+            
             /* 5. Parse the data */
+            
             /* 6. Use the data! */
         }
 
