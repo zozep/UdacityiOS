@@ -197,7 +197,7 @@ class MovieDetailViewController: UIViewController {
             }
             
             //did we get a successful 2xx response?
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statsuCode <= 299 else {
+            guard let statusCode = (reseponse as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 print("Your request returned a status code other than 2xx!")
                 return
             }
