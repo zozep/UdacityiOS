@@ -208,17 +208,41 @@ class MovieDetailViewController: UIViewController {
                 return
             }
         
-        }
         /* 5. Parse the data */
-        /* 6. Use the data! */
-        /* 7. Start the request */
-        
-        /* If the favorite/unfavorite request completes, then use this code to update the UI...
-        
-        performUIUpdatesOnMain {
-            self.favoriteButton.tintColor = (shouldFavorite) ? nil : UIColor.blackColor()
+            let parsedResult: [String: AnyObject]!
+            
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: AnyObject]
+            } catch {
+                print("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            //did we receive a TMDB status_code?
+            guard let tmdbStatusCode = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int else {
+                print("Could not find key '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)")
+                return
+            }
+            
+            //did we receive the correct TMDB status_code?
+            if shouldFavorite && !(tmdbStatusCode == 12 || tmdbStatusCode == 1) {
+                print("Unrecognized '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)")
+                return
+            } else if !shouldFavorite && tmdbStatusCode != 13 {
+                print("Unrecognized '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)")
+                return
+            }
+            
+            /* 6. Use the data! */
+            self.isFavorite = shouldFavorite
+            
+            //if the favorite/unfavorite request completes, then use this code to update the UI...
+            performUIUpdatesOnMain {
+                self.favoriteButton.tintColor = (shouldFavorite) ? nil: .black
+            }
         }
         
-        */
+        /* 7. Start the request */
+        task.resume()
     }
 }
