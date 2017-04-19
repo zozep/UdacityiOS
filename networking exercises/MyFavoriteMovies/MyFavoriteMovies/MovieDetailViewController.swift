@@ -172,12 +172,43 @@ class MovieDetailViewController: UIViewController {
     
     @IBAction func toggleFavorite(_ sender: AnyObject) {
         
-        // let shouldFavorite = !isFavorite
+        let shouldFavorite = !isFavorite
         
         /* TASK: Add movie as favorite, then update favorite buttons */
         /* 1. Set the parameters */
+        let methodParameters = [Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey,
+                                Constants.TMDBParameterKeys.SessionID: appDelegate.sessionID!]
+        
         /* 2/3. Build the URL, Configure the request */
+        let request = NSMutableURLRequest(url: appDelegate.tmdbURLFromParameters(methodParameters as [String:AnyObject], withPathExtension: "/account/\(appDelegate.userID!)/favorite"))
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"media_type\": \"movie\",\"media_id\": \(movie!.id),\"favorite\":\(shouldFavorite)}".data(using: String.Encoding.utf8)
+        
         /* 4. Make the request */
+        let task = appDelegate.sharedSession.dataTask(with: request as URLRequest) { (data, reseponse, error) in
+            
+            //was there an error?
+            guard(error == nil ) else {
+                print("There was an error with your request! \(error)")
+                return
+            }
+            
+            //did we get a successful 2xx response?
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statsuCode <= 299 else {
+                print("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            //was there any data returned?
+            guard let data = data else {
+                print("No data was returned")
+                return
+            }
+        
+        }
         /* 5. Parse the data */
         /* 6. Use the data! */
         /* 7. Start the request */
