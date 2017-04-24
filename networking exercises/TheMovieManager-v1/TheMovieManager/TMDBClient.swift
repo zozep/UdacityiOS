@@ -40,17 +40,19 @@ class TMDBClient : NSObject {
         parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey as AnyObject?
         
         let request = NSMutableURLRequest(url: tmdbURLFromParameters(parametersWithApiKey, withPathExtension: method))
+        
+        //make the request
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             func sendError(_ error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey: error]
-                completionHandlerForGET(nil, NSError(domain: "taskforGETMethod", code: 1, userInfo: userinfo))
+                completionHandlerForGET(nil, NSError(domain: "taskforGETMethod", code: 1, userInfo: userInfo))
             }
             
             //was there an error?
             guard (error == nil) else {
-                sendError("there was an error with your request: \(error)")
+                sendError("there was an error with your request: \(String(describing: error))")
                 return
             }
             
@@ -100,8 +102,8 @@ class TMDBClient : NSObject {
             }
             
             //was there an error?
-            guard(error == error) else {
-                sendError("There was an error with your request \(error)")
+            guard(error == nil) else {
+                sendError("There was an error with your request \(String(describing: error))")
                 return
             }
             
@@ -119,7 +121,7 @@ class TMDBClient : NSObject {
             }
             
             // 5/6. parse the dta and use the dat (happends in completion handler)
-            self.convertDataWithCompletionHander(data, convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST))
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
         }
         
         //7. start the request
@@ -196,7 +198,7 @@ class TMDBClient : NSObject {
     }
     
     // create a URL from parameters
-    class func tmdbURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
+    private func tmdbURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
         
         var components = URLComponents()
         components.scheme = TMDBClient.Constants.ApiScheme
