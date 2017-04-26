@@ -62,6 +62,8 @@ class ViewController: UIViewController {
         let url = URL(string: BigImages.shark.rawValue)
         let downloadQueue = DispatchQueue(label: "download", attributes: [])
         
+        // add a closure that encapsulates the blocking operation
+        // run it asynchronously: some time in the near future
         downloadQueue.async { () -> Void in
             let imageData = try? Data(contentsOf: url!)
             let image = UIImage(data: imageData!)
@@ -75,7 +77,26 @@ class ViewController: UIViewController {
     // This code downloads the huge image in a global queue and uses a completion
     // closure.
     @IBAction func asynchronousDownload(_ sender: UIBarButtonItem) {
+        withBigImage { (image) -> Void in
+            self.photoView.image = image
+        }
+    }
+    
+    func withBigImage(completionHandler handler: @escaping (_ image: UIImage) -> Void) {
         
+        //qos = quality of service
+        //userInitiated = normal priority
+        DispatchQueue.global(qos: .userInitiated).async { () -> Void in
+            
+            // get the url, get the NSData, turn it into a UIImage
+            if let url = URL(string: BigImages.whale.rawValue), let imgData = try? Data(contentsOf: url), let img = UIImage(data: imgData) {
+                
+                //ALWAYS run the completion block in the main queue, just in case!
+                DispatchQueue.main.async(execute: { () -> Void in
+                    handler(img)
+                })
+            }
+        }
     }
     
     // Changes the alpha value (transparency of the image). It's only purpose is to show if the
