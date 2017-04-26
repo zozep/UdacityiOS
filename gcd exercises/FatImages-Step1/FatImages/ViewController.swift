@@ -41,6 +41,17 @@ class ViewController: UIViewController {
     // This si for instructional purposes only, never do this.
     @IBAction func synchronousDownload(_ sender: UIBarButtonItem) {
         
+        //get the url for the image
+        let url = URL(string: BigImages.seaLion.rawValue)
+        
+        //obtain the NSdata with the image
+        let imgData = try? Data(contentsOf: url!)
+        
+        //turn it into a UIImage
+        let image = UIImage(data: imgData!)
+        
+        //display it
+        photoView.image = image
     }
     
     // This method avoids blocking by creating a new queue that runs
