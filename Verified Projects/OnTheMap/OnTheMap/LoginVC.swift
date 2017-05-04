@@ -23,7 +23,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     
     func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
         }))
