@@ -37,6 +37,26 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         appDelegate = UIApplication.shared.delegate as! AppDelegate
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    @IBAction func signUpButton(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated")!, options: [:], completionHandler:  nil)
+    }
+    @IBAction func loginButton(_ sender: Any) {
+        dismissKeyboard()
+        self.view.endEditing(true)
+        loginWithUdacity()
+        indicator.loadingView(true)
+    }
+    
+    func loginWithUdacity() {
+        
+    }
+    
     //Keyboard Notifications
     
     func subscribeToKeyboardNotifications() {
