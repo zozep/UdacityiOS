@@ -13,6 +13,7 @@
 		7CB26CAA1EB1BEB5002148FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB26CA91EB1BEB5002148FC /* Assets.xcassets */; };
 		7CB26CAD1EB1BEB5002148FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB26CAB1EB1BEB5002148FC /* LaunchScreen.storyboard */; };
 		7CD7C8B41EB85F0C0052EE7A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7C8B31EB85F0C0052EE7A /* LoginVC.swift */; };
+		7CD7C8B81EBADB760052EE7A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7C8B71EBADB760052EE7A /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7CB26CAC1EB1BEB5002148FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CB26CAE1EB1BEB5002148FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CD7C8B31EB85F0C0052EE7A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		7CD7C8B71EBADB760052EE7A /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				7CD7C8B31EB85F0C0052EE7A /* LoginVC.swift */,
 				7CB26CA41EB1BEB5002148FC /* MainVC.swift */,
+				7CD7C8B71EBADB760052EE7A /* UserInfo.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD7C8B81EBADB760052EE7A /* UserInfo.swift in Sources */,
 				7CB26CA51EB1BEB5002148FC /* MainVC.swift in Sources */,
 				7CB26CA31EB1BEB5002148FC /* AppDelegate.swift in Sources */,
 				7CD7C8B41EB85F0C0052EE7A /* LoginVC.swift in Sources */,
