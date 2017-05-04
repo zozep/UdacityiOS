@@ -14,15 +14,29 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     //Login Info
     
     var appDelegate: AppDelegate!
-    
+    var indicator = Indicator()
+
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tapOutKeyboard()
+        
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+    }
     //Keyboard Notifications
     
     func subscribeToKeyboardNotifications() {
@@ -67,3 +81,30 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return true
     }
 }
+
+
+extension UIViewController {
+    
+    //Keyboard Controls
+    
+    func tapOutKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func showSpinner() -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        DispatchQueue.main.async(execute: {
+            spinner.center = self.view.center
+            spinner.color = UIColor.orange
+            self.view.addSubview(spinner)
+            spinner.startAnimating()
+        })
+        
+        return spinner
+    }
+}
+
