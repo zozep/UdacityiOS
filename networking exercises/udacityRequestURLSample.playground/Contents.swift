@@ -15,3 +15,4 @@ let task = session.dataTask(with: request as URLRequest) { data, response, error
     print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
 }
 task.resume()
+
