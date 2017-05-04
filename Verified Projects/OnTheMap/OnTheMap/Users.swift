@@ -1,5 +1,5 @@
 //
-//  UserInfo.swift
+//  Users.swift
 //  OnTheMap
 //
 //  Created by Joseph Park on 5/3/17.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-struct UserInfo {
+struct UsersInfo {
     //Users Data
     
     let firstName: String
@@ -21,7 +21,7 @@ struct UserInfo {
     let uniqueKey: String
     
     
-    init?(dictionary: [String: Any]) {
+    init?(dictionary: [String: AnyObject]) {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
             let mediaURL = dictionary["mediaURL"] as? String,
@@ -40,4 +40,18 @@ struct UserInfo {
         self.objectId = objectId
         self.uniqueKey = uniqueKey
     }
+    
+    static func UsersDataResults(_ results: [[String: AnyObject]]) -> [UsersInfo] {
+        var usersList = [UsersInfo]()
+        
+        //User data results
+        for result in results {
+            if let UsersInfo = UsersInfo(dictionary: result) {
+                usersList.append(UsersInfo)
+            }
+        }
+        return usersList
+    }
+    
+    static var UsersArray : [UsersInfo] = []
 }

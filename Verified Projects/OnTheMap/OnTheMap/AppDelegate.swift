@@ -11,7 +11,19 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    //AppDelegate Data Info
+
     var window: UIWindow?
+    var userID: String = ""
+    
+    var firstName: String = ""
+    var lastName: String = ""
+    var objectId: String = ""
+    var uniqueKey: String = ""
+    
+    var willOverwrite: Bool = false
+    
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
