@@ -54,7 +54,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     func loginWithUdacity() {
-        
+        //WIP
+        print("login with udacity func running")
+    }
+
+    
+    
     }
     
     //Keyboard Notifications

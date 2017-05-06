@@ -15,6 +15,7 @@
 		7CD7C8B41EB85F0C0052EE7A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7C8B31EB85F0C0052EE7A /* LoginVC.swift */; };
 		7CD7C8B81EBADB760052EE7A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7C8B71EBADB760052EE7A /* Users.swift */; };
 		7CD7C8BA1EBBEDE10052EE7A /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7C8B91EBBEDE10052EE7A /* Indicator.swift */; };
+		7CD7C8BC1EBBFBD50052EE7A /* UdacityNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7C8BB1EBBFBD50052EE7A /* UdacityNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7CD7C8B31EB85F0C0052EE7A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7CD7C8B71EBADB760052EE7A /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		7CD7C8B91EBBEDE10052EE7A /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		7CD7C8BB1EBBFBD50052EE7A /* UdacityNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				7CB26CA41EB1BEB5002148FC /* MainVC.swift */,
 				7CD7C8B71EBADB760052EE7A /* Users.swift */,
 				7CD7C8B91EBBEDE10052EE7A /* Indicator.swift */,
+				7CD7C8BB1EBBFBD50052EE7A /* UdacityNetwork.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			files = (
 				7CD7C8B81EBADB760052EE7A /* Users.swift in Sources */,
 				7CB26CA51EB1BEB5002148FC /* MainVC.swift in Sources */,
+				7CD7C8BC1EBBFBD50052EE7A /* UdacityNetwork.swift in Sources */,
 				7CB26CA31EB1BEB5002148FC /* AppDelegate.swift in Sources */,
 				7CD7C8BA1EBBEDE10052EE7A /* Indicator.swift in Sources */,
 				7CD7C8B41EB85F0C0052EE7A /* LoginVC.swift in Sources */,

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var uniqueKey: String = ""
     
     var willOverwrite: Bool = false
-    
+    var errorMessage = ErrorMessage()
     
 
 
