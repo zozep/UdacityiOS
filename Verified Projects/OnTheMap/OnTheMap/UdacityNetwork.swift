@@ -25,7 +25,6 @@ class UdacityNetwork: NSObject {
         let missingLink = "Need To Enter Link!"
         let cantLogin = "Network Connection Is Offline!"
         let invalidEmail = "Invalid Email Or Password!"
-        
     }
     
     //Login To Udacity
@@ -52,10 +51,47 @@ class UdacityNetwork: NSObject {
                 return
             }
             
-            
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                handleError(error: "Your request returned a status code other than 2xx", errorMessage: self.appDelegate.errorMessage.cantLogin)
+                handleError(error: "Your request returned a status code other than 2xx", errorMessage: self.appDelegate.errorMessage.invalidEmail)
+                return
             }
+            
+            guard let data = data else {
+                handleError(error: "No data was returned by the request", errorMessage: self.appDelegate.errorMessage.cantLogin)
+            }
+            
+            //Parse the data
+            
+            let stringData = String(data: data, encoding: String.Encoding.utf8)
+            print(stringData ?? "stringData done")
+            
+            let newData = data.subdata(in: Range(uncheckedBounds: (5, data.count)))
+            let stringNewData = String(data: newData, encoding: String.Encoding.utf8)
+            print(stringNewData ?? "stringNewData Done")
+            
+            let parsedResult = try? JSONSerialization.jsonObject(with: newData, options: .allowFragments)
+            
+            guard let dictionary = parsedResult as? [String: AnyObject] else {
+                handleError(error: "Can't parse dict", errorMessage: self.appDelegate.errorMessage.cantLogin)
+                return
+            }
+            
+            guard let account = dictionary["account"] as? [String: AnyObject] else {
+                handleError(error: "Can't find key 'Account in \(String(describing: parsedResult))", errorMessage: self.appDelegate.errorMessage.cantLogin)
+                return
+            }
+            
+            
+            //Use the data
+            guard let userID = account["key"] as? String else {
+                handleError(error: "can't find key 'key' in \(account)", errorMessage: self.appDelegate.errorMessage.CantLogin)
+                return
+            }
+            
+            self.appDelegate.userID = userID
+            completionHandlerForAuth(true, nil, nil)
+        }
+        task.resume()
     }
 }
 
