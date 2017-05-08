@@ -93,5 +93,37 @@ class UdacityNetwork: NSObject {
         }
         task.resume()
     }
+    
+    func getUserData(userID: String, completionHandlerForAuth: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "https://www.udacity.com/api/users/\(userID)")! as URL)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey: error]
+                completionHandlerForAuth(false, NSError(domain: "getUserData", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError(error: "There was an error with yout request \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError(error: "Your request returned a status code other than 2xx")
+                return
+            }
+            
+            guard let data = data else {
+                sendError(error: "No data was returned by the request")
+                return
+            }
+            
+            //parse data
+            let newData = data.subdata(in: Range(uncheckedBounds: (5, data.count)))
+    }
+    
 }
 

@@ -19,6 +19,7 @@ class Indicator: UIActivityIndicatorView {
     */
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("use init(")
         
