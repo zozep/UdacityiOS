@@ -57,7 +57,36 @@ final class UdacityUserAPI: NSObject {
     
     func logout(result: @escaping (_ success: Bool) -> Void) {
         //WIP
+        let request = NSMutableURLRequest(url: URL(string: URLString.logout)!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" {
+                xsrfCookie = cookie
+            }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: Keys.XSRFToken)
+        }
+        
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                result(false)
+                return
+            }
+            let range = Range(uncheckedBounds: (5, data!.count - 5))
+            
+            //subset response data
+            let newData = data?.subdata(in: range)
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            result(true)
+        }
+        task.resume()
     }
+    
     
     
 }
