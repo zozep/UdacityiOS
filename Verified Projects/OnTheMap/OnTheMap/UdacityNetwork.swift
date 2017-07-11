@@ -17,16 +17,6 @@ class UdacityNetwork: NSObject {
         super.init()
     }
     
-    struct ErrorMessage {
-        let dataError = "Error Getting Data!"
-        let mapError = "Failed To Geocode!"
-        let updateError = "Failed To Update Location!"
-        let invalidLink = "Invalid Link!"
-        let missingLink = "Need To Enter Link!"
-        let cantLogin = "Network Connection Is Offline!"
-        let invalidEmail = "Invalid Email Or Password!"
-    }
-    
     //Login To Udacity
     
     func getUdacityData(username: String, password: String, completionHandlerForAuth: @escaping (_ success: Bool, _ errorMessage: String?, _ error: NSError?) -> Void) {
@@ -123,7 +113,29 @@ class UdacityNetwork: NSObject {
             
             //parse data
             let newData = data.subdata(in: Range(uncheckedBounds: (5, data.count)))
+            
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments)
+            } catch {
+                sendError(error: "Could not parse the data as json \(data)")
+                return
+            }
+            
+            guard let dictionary = parsedResult as? [String: AnyObject] else {
+                sendError(error: "Cannot parse")
+                return
+            }
+            
+            guard let user = dictionary["user"] as? [String: AnyObject] else {
+                sendError(error: "cannot find key 'user' in \(parsedResult)")
+                return
+            }
+            
+            guard let lastName = user["last_name"] as? String else {
+                sendError(error: "can't find key 'last_name' in \(user)")
+                return
+            }
+        }
     }
-    
 }
-
