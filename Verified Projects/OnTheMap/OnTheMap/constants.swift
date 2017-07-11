@@ -73,6 +73,7 @@ struct StudentInfoKeys{
 
 // Json response keys
 struct JSONResponseKeys {
+    
     static let error = "error"
     static let results = "results"
     static let objectID = "objectId"
@@ -88,25 +89,25 @@ struct JSONResponseKeys {
 }
 
 // Alert Messages
-struct AlertMessage{
+struct AlertMessage {
     
-    static let overWriteLocation = "You Have Already Posted a Student Location. Would You Like to Overwrite Your Current Location?"
-    static let enterValidCredentilas = "Please enter valid credentials."
-    static let invalidCredentials = "Incorrect Username or Password. Please enter correct credentials."
+    static let overWriteLocation = "You Have Already Posted a Student Location. Would You Like to overwite your current location?"
+    static let enterValidCredentilas = "Enter valid credentials."
+    static let invalidCredentials = "Incorrect Username or Password. Enter correct credentials."
     static let noInternetConnection = "Seems like you don't have an internet connection"
-    static let failedRequest = "sorry we are unable to serve your request.Please try again."
-    static let failedToFetchUserDetails = "Sorry we are unable to fetch user details.Please try again."
-    static let failedToLoadStudentLocations = "Sorry we are unable to load students locations. please reload it."
+    static let failedRequest = "Sorry we are unable to serve your request. Please try again."
+    static let failedToFetchUserDetails = "Sorry we are unable to fetch user details. Please try again."
+    static let failedToLoadStudentLocations = "Sorry we are unable to load students locations. Please reload it."
     static let errorInLogout = "Error in logout. Please try again later."
     static let invalidURL = "Unable to open provided link."
-    static let failedToUpdateStudentLocation = "Sorry We are unable to update your location. Please try again later."
-    static let failedToPostStudentLocation =  "Sorry We are unable to post your location. Please try again later."
+    static let failedToUpdateStudentLocation = "Sorry we are unable to update your location. Please try again later."
+    static let failedToPostStudentLocation =  "Sorry we are unable to post your location. Please try again later."
     static let failedToGeocodeLocation = "Failed to geocode the given location.Please try another address"
     static let errorInPlacemarks = "No Placemarks returned for the given location.Please provide correct location."
 }
 
 // Alert title
-struct AlertTitle{
+struct AlertTitle {
     
     static let alert = "Alert"
     static let overWrite = "Overwrite"
