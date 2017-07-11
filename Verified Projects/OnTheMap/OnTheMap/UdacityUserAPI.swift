@@ -29,9 +29,35 @@ final class UdacityUserAPI: NSObject {
         request.addValue(Values.contentType, forHTTPHeaderField: Keys.accept)
         request.addValue(Values.contentType, forHTTPHeaderField: Keys.contentType)
         request.httpBody = "{\"udacity\": {\"username\": \"\(userName)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
-
-
         
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if error != nil {
+                if let handler = handler {
+                    handler(nil, nil, error as NSError?)
+                }
+                return
+            }
+            
+            guard let data = data else {
+                print("No data was returned by request")
+                return
+            }
+            
+            //subset response data!
+            let newData = data.subdata(in: Range(5..<data.count))
+            print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
+            
+            if let handler = handler {
+                handler(newData, response, error as NSError?)
+            }
+        }
+        task.resume()
     }
+    
+    func logout(result: @escaping (_ success: Bool) -> Void) {
+        //WIP
+    }
+    
     
 }

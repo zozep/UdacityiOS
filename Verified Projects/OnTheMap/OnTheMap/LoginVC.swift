@@ -24,15 +24,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     
     
-    func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tapOutKeyboard()
@@ -62,7 +53,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         selectedTextField = textField
     }
     
-    //keyboard
     func subscribeToKeyboardNotifications() {
         userNameField.delegate = self
         passwordField.delegate = self
@@ -76,6 +66,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    //keyboard
     func keyboardWillShow(_ notification: Notification) {
         if passwordField.isFirstResponder && view.frame.origin.y == 0 {
             view.frame.origin.y = getKeyboardHeight(notification) * -0.5
@@ -95,86 +86,85 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        userNameField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-        
-        return true
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func signUpButton(_ sender: Any) {
-        UIApplication.shared.open(URL(string: URLString.signUp)!, options: [:], completionHandler:  nil)
-    }
-    
     @IBAction func loginButton(_ sender: Any) {
-        dismissKeyboard()
-        self.view.endEditing(true)
-        loginWithUdacity()
-        indicator.loadingView(true)
-    }
-    
-    func loginWithUdacity() {
-
-        guard let email = userNameField.text, let password = passwordField.text else {
-            print("error on email or text")
+        guard let userName = userNameField.text, let password = passwordField.text else {
             return
         }
         
-        if email.isEmpty || password.isEmpty {
+        if userName.isEmpty || password.isEmpty {
             self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.enterValidCredentials)
             return
         }
         
-        _ = showActivityIndicator()
-        UdacityUserAPI.sharedInstance().signInWithUdacityCredentials(userName: userNameField, password: passwordField, completionHandler: <#T##RequestCompletionHandler?##RequestCompletionHandler?##(Data?, URLResponse?, NSError?) -> Void#>)
-    }
-
-    
-    
-
-}
-
-
-extension UIViewController {
-    
-    //Keyboard Controls
-    
-    func tapOutKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    func showSpinner() -> UIActivityIndicatorView {
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        DispatchQueue.main.async(execute: {
-            spinner.center = self.view.center
-            spinner.color = UIColor.orange
-            self.view.addSubview(spinner)
-            spinner.startAnimating()
-        })
+        let activityIndicator = showActivityIndicator()
         
-        return spinner
+        UdacityUserAPI.sharedInstance().signInWithUdacityCredentials(userName: userName, password: password) { (data, response, error) in
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 200 || response.statusCode > 300 {
+                    activityIndicator.hide()
+                    self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.invalidCredentials)
+                    
+                    return
+                }
+            }
+            
+            if let error = error {
+                activityIndicator.hide()
+                
+                //no internet
+                if error.code == NSURLErrorNotConnectedToInternet {
+                    self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.noInternetConnection)
+                    return
+                    
+                } else {
+                    self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.failedRequest)
+                }
+                
+            } else {
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with:data!, options:.allowFragments) as? [String:AnyObject]
+                    
+                    if let account = jsonData?["account"] as? [String:AnyObject] {
+                        
+                        // store unique key
+                        Users.sharedInstance.uniqueKey = account["uniqueKey"] as? String
+                        
+                        // fetch user infromation
+                        UdacityUserAPI.sharedInstance().getUserLocationData { (result, error) in
+                            activityIndicator.hide()
+                            
+                            if result {
+                                // on success
+                                DispatchQueue.main.async(execute: {
+                                    self.performSegue(withIdentifier: "loginToTabView", sender: self)
+                                })
+                            } else {
+                                // failure to fetch user information.
+                                self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.failedToFetchUserDetails)
+                            }
+                        }
+                        
+                    } else {
+                        activityIndicator.hide()
+                        self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.invalidCredentials)
+                        
+                        return
+                    }
+                } catch {
+                    activityIndicator.hide()
+                    self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.failedRequest)
+                }
+            }
+        }
     }
-    
+
+    @IBAction func signUpButton(_ sender: Any) {
+        UIApplication.shared.open(URL(string: URLString.signUp)!, options: [:], completionHandler:  nil)
+    }
+
     //MARK: Activity Indicator Method
-    func showActivityIndicator() -> UIActivityIndicatorView{
+    func showActivityIndicator() -> UIActivityIndicatorView {
+        
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         
         DispatchQueue.main.async {
@@ -186,16 +176,5 @@ extension UIViewController {
         
         return activityIndicator
     }
-    
-    func createAlertMessage(title:String,message:String){
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        DispatchQueue.main.async(execute: {
-            
-            self.present(alert, animated: true, completion: nil)
-        })
-    }
 
 }
-

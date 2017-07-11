@@ -11,23 +11,25 @@ import UIKit
 
 class UdacityNetwork: NSObject {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    // shared session
+    var session = URLSession.shared
     
-    override init() {
-        super.init()
+    class func sharedInstance() -> UdacityUserAPI {
+        struct Singleton {
+            static var sharedInstance = UdacityUserAPI()
+        }
+        return Singleton.sharedInstance
     }
-    
+
     //Login To Udacity
     
     func getUdacityData(username: String, password: String, completionHandlerForAuth: @escaping (_ success: Bool, _ errorMessage: String?, _ error: NSError?) -> Void) {
         
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "POST"
-        request.addValue("applicatoin/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("applicatoin/json", forHTTPHeaderField: Keys.accept)
+        request.addValue("application/json", forHTTPHeaderField: Keys.contentType)
         request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
-        
-        let session = URLSession.shared
         
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             func handleError(error: String, errorMessage: String) {
