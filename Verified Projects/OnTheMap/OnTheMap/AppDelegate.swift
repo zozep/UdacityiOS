@@ -14,17 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //AppDelegate Data Info
 
     var window: UIWindow?
-    var userID: String = ""
     
-    var firstName: String = ""
-    var lastName: String = ""
-    var objectId: String = ""
-    var uniqueKey: String = ""
-    
-    var willOverwrite: Bool = false
-    var errorMessage = ErrorMessage()
-    
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

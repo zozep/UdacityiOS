@@ -90,7 +90,7 @@ struct JSONResponseKeys {
 struct AlertMessage{
     
     static let overWriteLocation = "You have already posted a location. Would You Like to Overwrite Your Current Location?"
-    static let enterValidCredentilas = "Please enter valid credentials."
+    static let enterValidCredentials = "Please enter valid credentials."
     static let invalidCredentials = "Incorrect Username or Password. Please enter correct credentials."
     static let noInternetConnection = "Seems like you don't have an internet connection"
     static let failedRequest = "Sorry we are unable to serve your request.Please try again."

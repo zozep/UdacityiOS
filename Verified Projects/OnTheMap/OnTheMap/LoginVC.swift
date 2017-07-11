@@ -15,7 +15,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     var appDelegate: AppDelegate!
     var indicator = Indicator()
-
+    var selectedTextField: UITextField!
+    
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -35,51 +36,39 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tapOutKeyboard()
-        
-        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        subscribeToKeyboardNotifications()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-    }
-    
-    @IBAction func signUpButton(_ sender: Any) {
-        UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated")!, options: [:], completionHandler:  nil)
-    }
-    
-    @IBAction func loginButton(_ sender: Any) {
-        dismissKeyboard()
-        self.view.endEditing(true)
-        loginWithUdacity()
-        indicator.loadingView(true)
-    }
-    
-    func loginWithUdacity() {
-        //WIP
-        guard let email = userNameField.text, let password = passwordField.text else {
-            print("error on email or text")
-            return
-        }
+        userNameField.text = ""
+        passwordField.text = ""
         
-        if email.isEmpty || password.isEmpty {
-            self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.enterValidCredentials)
-            return
-        }
-        
-        let activityIndicator = showActivityIndicator()
-        UdacityUserAPI
     }
-
     
+    // MARK: - KeyBoard Resigning and Notification
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
-
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        selectedTextField = textField
+    }
     
-    //Keyboard Notifications
-    
+    //keyboard
     func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        userNameField.delegate = self
+        passwordField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -88,7 +77,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        self.view.frame.origin.y = -getKeyboardHeight(notification)
+        if passwordField.isFirstResponder && view.frame.origin.y == 0 {
+            view.frame.origin.y = getKeyboardHeight(notification) * -0.5
+        }
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
@@ -99,7 +90,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        self.view.frame.origin.y = 0
+        if selectedTextField.isFirstResponder {
+            self.view.frame.origin.y = 0
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -112,6 +105,46 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         return true
     }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func signUpButton(_ sender: Any) {
+        UIApplication.shared.open(URL(string: URLString.signUp)!, options: [:], completionHandler:  nil)
+    }
+    
+    @IBAction func loginButton(_ sender: Any) {
+        dismissKeyboard()
+        self.view.endEditing(true)
+        loginWithUdacity()
+        indicator.loadingView(true)
+    }
+    
+    func loginWithUdacity() {
+
+        guard let email = userNameField.text, let password = passwordField.text else {
+            print("error on email or text")
+            return
+        }
+        
+        if email.isEmpty || password.isEmpty {
+            self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.enterValidCredentials)
+            return
+        }
+        
+        _ = showActivityIndicator()
+        UdacityUserAPI.sharedInstance().signInWithUdacityCredentials(userName: userNameField, password: passwordField, completionHandler: <#T##RequestCompletionHandler?##RequestCompletionHandler?##(Data?, URLResponse?, NSError?) -> Void#>)
+    }
+
+    
+    
+
 }
 
 
@@ -139,5 +172,30 @@ extension UIViewController {
         
         return spinner
     }
+    
+    //MARK: Activity Indicator Method
+    func showActivityIndicator() -> UIActivityIndicatorView{
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        
+        DispatchQueue.main.async {
+            activityIndicator.center = self.view.center
+            activityIndicator.color = UIColor.black
+            self.view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+        }
+        
+        return activityIndicator
+    }
+    
+    func createAlertMessage(title:String,message:String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        DispatchQueue.main.async(execute: {
+            
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+
 }
 
