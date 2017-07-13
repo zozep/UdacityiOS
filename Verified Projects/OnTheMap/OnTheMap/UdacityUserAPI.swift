@@ -56,7 +56,7 @@ final class UdacityUserAPI: NSObject {
     }
     
     func logout(result: @escaping (_ success: Bool) -> Void) {
-        //WIP
+        
         let request = NSMutableURLRequest(url: URL(string: URLString.logout)!)
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil

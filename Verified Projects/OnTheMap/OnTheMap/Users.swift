@@ -7,51 +7,40 @@
 //
 
 import Foundation
-import MapKit
 
-struct UsersInfo {
-    //Users Data
+class Users: NSObject {
     
-    let firstName: String
-    let lastName: String
-    let mediaURL: String
-    let lat: Double
-    let long: Double
-    let objectId: String
-    let uniqueKey: String
+    var firstName: String?
+    var lastName: String?
+    var uniqueKey: String?
+    var latitude: Double?
+    var longitude: Double?
+    var mapString: String?
+    var mediaURL: String?
+    var objectId: String?
+    var updatedAt: String?
+    var createdAt: String?
     
-    
-    init?(dictionary: [String: AnyObject]) {
-        guard let firstName = dictionary["firstName"] as? String,
-            let lastName = dictionary["lastName"] as? String,
-            let mediaURL = dictionary["mediaURL"] as? String,
-            let lat = dictionary["latitude"] as? Double,
-            let long = dictionary["longitude"] as? Double,
-            let objectId = dictionary["objectId"] as? String,
-            let uniqueKey = dictionary["uniqueKey"] as? String
-        else {
-            return nil
-        }
-        self.firstName = firstName
-        self.lastName = lastName
-        self.mediaURL = mediaURL
-        self.lat = lat
-        self.long = long
-        self.objectId = objectId
-        self.uniqueKey = uniqueKey
-    }
-    
-    static func UsersDataResults(_ results: [[String: AnyObject]]) -> [UsersInfo] {
-        var usersList = [UsersInfo]()
+    static let sharedInstance : UdacityUser = {
         
-        //User data results
-        for result in results {
-            if let UsersInfo = UsersInfo(dictionary: result) {
-                usersList.append(UsersInfo)
-            }
-        }
-        return usersList
-    }
+        let instance = UdacityUser()
+        return instance
+    }()
     
-    static var UsersArray : [UsersInfo] = []
+    func updateUdacityUserDetails(studentDict: [String:AnyObject]) -> Void{
+        
+        objectId = studentDict[StudentInfoKeys.objectIdKey] as! String?
+        createdAt = studentDict[StudentInfoKeys.createdAtKey] as! String?
+        updatedAt = studentDict[StudentInfoKeys.updatedAtKey] as! String?
+        firstName = studentDict[StudentInfoKeys.firstNameKey] as! String?
+        lastName = studentDict[StudentInfoKeys.lastNameKey] as! String?
+        uniqueKey = studentDict[StudentInfoKeys.uniqueKeyKey] as! String?
+        latitude = studentDict[StudentInfoKeys.latitudeKey] as! Double?
+        longitude = studentDict[StudentInfoKeys.longitudeKey] as! Double?
+        mapString = studentDict[StudentInfoKeys.mapStringKey] as! String?
+        mediaURL = studentDict[StudentInfoKeys.mediaURLKey] as! String?
+        
+        return
+    }
+
 }
