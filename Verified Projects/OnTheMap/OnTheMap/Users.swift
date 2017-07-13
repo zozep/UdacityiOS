@@ -21,13 +21,13 @@ class Users: NSObject {
     var updatedAt: String?
     var createdAt: String?
     
-    static let sharedInstance : UdacityUser = {
+    static let sharedInstance : Users = {
         
         let instance = UdacityUser()
         return instance
     }()
     
-    func updateUdacityUserDetails(studentDict: [String:AnyObject]) -> Void{
+    func updateUdacityUserDetails(studentDict: [String:AnyObject]) -> Void {
         
         objectId = studentDict[StudentInfoKeys.objectIdKey] as! String?
         createdAt = studentDict[StudentInfoKeys.createdAtKey] as! String?
