@@ -23,7 +23,7 @@ class Users: NSObject {
     
     static let sharedInstance : Users = {
         
-        let instance = UdacityUser()
+        let instance = Users()
         return instance
     }()
     

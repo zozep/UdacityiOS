@@ -87,6 +87,9 @@ final class UdacityUserAPI: NSObject {
         task.resume()
     }
     
+    func getUserLocation(success: @escaping (_ result: Bool, _ error: Error) -> Void) {
+        //wip
+    }
     
     
 }
