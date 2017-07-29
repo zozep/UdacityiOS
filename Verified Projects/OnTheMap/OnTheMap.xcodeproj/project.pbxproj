@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CA390791F1AAB0C00867A74 /* onTheMapErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA390781F1AAB0C00867A74 /* onTheMapErrors.swift */; };
 		7CB26CA31EB1BEB5002148FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB26CA21EB1BEB5002148FC /* AppDelegate.swift */; };
 		7CB26CA51EB1BEB5002148FC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB26CA41EB1BEB5002148FC /* MainVC.swift */; };
 		7CB26CA81EB1BEB5002148FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB26CA61EB1BEB5002148FC /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7CA390781F1AAB0C00867A74 /* onTheMapErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = onTheMapErrors.swift; sourceTree = "<group>"; };
 		7CB26C9F1EB1BEB5002148FC /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB26CA21EB1BEB5002148FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CB26CA41EB1BEB5002148FC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				7CB26CA91EB1BEB5002148FC /* Assets.xcassets */,
 				7CB26CAB1EB1BEB5002148FC /* LaunchScreen.storyboard */,
 				7CB26CAE1EB1BEB5002148FC /* Info.plist */,
+				7CA390781F1AAB0C00867A74 /* onTheMapErrors.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA390791F1AAB0C00867A74 /* onTheMapErrors.swift in Sources */,
 				7CD7C8B81EBADB760052EE7A /* Users.swift in Sources */,
 				7CB26CA51EB1BEB5002148FC /* MainVC.swift in Sources */,
 				7CFF08FF1F155A0800CD3EB8 /* UIViewControllerExtension.swift in Sources */,

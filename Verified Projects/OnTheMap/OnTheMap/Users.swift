@@ -27,18 +27,18 @@ class Users: NSObject {
         return instance
     }()
     
-    func updateUdacityUserDetails(studentDict: [String:AnyObject]) -> Void {
+    func updateUdacityUserDetails(studentDictionary: [String:AnyObject]) -> Void {
         
-        objectId = studentDict[StudentInfoKeys.objectIdKey] as! String?
-        createdAt = studentDict[StudentInfoKeys.createdAtKey] as! String?
-        updatedAt = studentDict[StudentInfoKeys.updatedAtKey] as! String?
-        firstName = studentDict[StudentInfoKeys.firstNameKey] as! String?
-        lastName = studentDict[StudentInfoKeys.lastNameKey] as! String?
-        uniqueKey = studentDict[StudentInfoKeys.uniqueKeyKey] as! String?
-        latitude = studentDict[StudentInfoKeys.latitudeKey] as! Double?
-        longitude = studentDict[StudentInfoKeys.longitudeKey] as! Double?
-        mapString = studentDict[StudentInfoKeys.mapStringKey] as! String?
-        mediaURL = studentDict[StudentInfoKeys.mediaURLKey] as! String?
+        objectId = studentDictionary[StudentInfoKeys.objectIdKey] as! String?
+        createdAt = studentDictionary[StudentInfoKeys.createdAtKey] as! String?
+        updatedAt = studentDictionary[StudentInfoKeys.updatedAtKey] as! String?
+        firstName = studentDictionary[StudentInfoKeys.firstNameKey] as! String?
+        lastName = studentDictionary[StudentInfoKeys.lastNameKey] as! String?
+        uniqueKey = studentDictionary[StudentInfoKeys.uniqueKeyKey] as! String?
+        latitude = studentDictionary[StudentInfoKeys.latitudeKey] as! Double?
+        longitude = studentDictionary[StudentInfoKeys.longitudeKey] as! Double?
+        mapString = studentDictionary[StudentInfoKeys.mapStringKey] as! String?
+        mediaURL = studentDictionary[StudentInfoKeys.mediaURLKey] as! String?
         
         return
     }
