@@ -86,6 +86,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //MARK: LOGIN
     @IBAction func loginButton(_ sender: Any) {
         guard let userName = userNameField.text, let password = passwordField.text else {
             return
@@ -150,6 +151,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         return
                     }
+
                 } catch {
                     activityIndicator.hide()
                     self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.failedRequest)

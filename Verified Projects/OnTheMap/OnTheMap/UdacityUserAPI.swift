@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joseph Park. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias RequestCompletionHandler = (_ data: Data?, _ response: URLResponse?, _ error: NSError?) -> Void
 
@@ -87,19 +87,20 @@ final class UdacityUserAPI: NSObject {
         task.resume()
     }
     
-    func getUserLocationData(success: @escaping (_ result: Bool, _ error: Error) -> Void) {
+     func getUserLocationData(success: @escaping (_ result: Bool, _ error: Error) -> Void) {
         //wip
         
         do {
             let url = URL(string: URLString.userInfo)
             var urlComponents = URLComponents(string: url!.absoluteString)
-            let query = ["\(StudentInfoKeys.uniqueKeyKey)":"\(Users.sharedInstance.uniqueKey!)"]
+            let query = ["\(StudentInfoKeys.uniqueKeyKey)":"\(Users.sharedInstance.uniqueKey)"]
             let dataValue = try JSONSerialization.data(withJSONObject: query, options: JSONSerialization.WritingOptions())
             let qValue = NSString(data: dataValue, encoding: String.Encoding.utf8.rawValue)! as String
             
             urlComponents?.queryItems = [URLQueryItem(name: "where", value: "\(qValue)")]
             
             guard let urlWithParameter = urlComponents?.url else {
+                print("urlWithParameter does not exist")
                 return
             }
             print("userInfo url is \(urlWithParameter)")
@@ -166,6 +167,7 @@ final class UdacityUserAPI: NSObject {
             return
         }
     }
+
     
     func getUserPublicData(success: @escaping (_ result:Bool, _ error : Error) -> Void){
         

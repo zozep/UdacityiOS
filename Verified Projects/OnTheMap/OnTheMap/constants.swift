@@ -87,7 +87,7 @@ struct JSONResponseKeys {
 }
 
 // Alert Messages
-struct AlertMessage{
+struct AlertMessage {
     
     static let overWriteLocation = "You have already posted a location. Would You Like to Overwrite Your Current Location?"
     static let enterValidCredentials = "Please enter valid credentials."
@@ -105,7 +105,7 @@ struct AlertMessage{
 }
 
 // Alert title
-struct AlertTitle{
+struct AlertTitle {
     
     static let alert = "Alert"
     static let overWrite = "Overwrite"
