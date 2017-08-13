@@ -103,7 +103,7 @@ final class UdacityUserAPI: NSObject {
                 print("urlWithParameter does not exist")
                 return
             }
-            print("userInfo url is \(urlWithParameter)")
+            //print("userInfo url is \(urlWithParameter)")
             
             let request = NSMutableURLRequest(url: urlWithParameter)
             request.addValue(Values.parseAppID, forHTTPHeaderField: Keys.parseAppID)
@@ -130,19 +130,19 @@ final class UdacityUserAPI: NSObject {
                 
                 do {
                     if let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] {
-                        print("user json is \(jsonData)")
+                        //print("user json is \(jsonData)")
                         
                         if let userInfoArray = jsonData["results"] as? [[String: AnyObject]], userInfoArray.count > 0 {
-                            print("userInfoArray is \(userInfoArray)")
+                            //print("userInfoArray is \(userInfoArray)")
                             
                             let count = userInfoArray.count
                             let userDictionary = userInfoArray[count - 1]
-                            print("userInfo is \(userDictionary)")
+                            //print("userInfo is \(userDictionary)")
                             
                             let user = Users.sharedInstance
                             user.updateUdacityUserDetails(studentDictionary: userDictionary)
-                            print("shared Instance objectId is \(Users.sharedInstance.objectId)")
-                            print("objectId is \(Users.sharedInstance.objectId)")
+                            //print("shared Instance objectId is \(Users.sharedInstance.objectId)")
+                            //print("objectId is \(Users.sharedInstance.objectId)")
                             
                             success(true, onTheMapErrors.noError)
                         

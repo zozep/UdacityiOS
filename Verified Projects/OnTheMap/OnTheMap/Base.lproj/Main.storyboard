@@ -55,7 +55,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uut-45-zoa">
                                 <rect key="frame" x="144" y="348" width="87" height="40"/>
@@ -98,7 +98,9 @@
                             <constraint firstItem="ehU-0C-aSv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7l9-Rr-wuC"/>
                             <constraint firstItem="bMG-SA-jaC" firstAttribute="centerX" secondItem="ehU-0C-aSv" secondAttribute="centerX" id="8j5-wv-VW9"/>
                             <constraint firstItem="l1U-Zv-waZ" firstAttribute="top" secondItem="4aH-Xy-5fO" secondAttribute="bottom" constant="52" id="Hdo-P4-t8U"/>
+                            <constraint firstItem="l1U-Zv-waZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="142" id="IOF-Xu-hqN"/>
                             <constraint firstItem="EHB-fy-TCV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="62" id="KvG-SW-du9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l1U-Zv-waZ" secondAttribute="trailing" constant="142" id="RDS-Qk-WFT"/>
                             <constraint firstItem="4aH-Xy-5fO" firstAttribute="centerY" secondItem="EHB-fy-TCV" secondAttribute="centerY" id="SeZ-D4-MRx"/>
                             <constraint firstItem="ehU-0C-aSv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="UQu-w1-Jha"/>
                             <constraint firstItem="4aH-Xy-5fO" firstAttribute="centerX" secondItem="EHB-fy-TCV" secondAttribute="centerX" id="V60-aP-2nE"/>
@@ -211,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="904" y="38"/>
         </scene>
-        <!--Root View Controller-->
+        <!--On The Map-->
         <scene sceneID="Iqp-aa-TsY">
             <objects>
                 <tableViewController id="GDW-2c-sV7" sceneMemberID="viewController">
@@ -234,7 +236,7 @@
                             <outlet property="delegate" destination="GDW-2c-sV7" id="n5S-yX-JtD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="DsZ-c2-GkH"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="DsZ-c2-GkH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCG-kd-LIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
