@@ -14,7 +14,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     //Login Info
     
     var appDelegate: AppDelegate!
-    var indicator = Indicator()
     var selectedTextField: UITextField!
     
     @IBOutlet weak var userNameField: UITextField!

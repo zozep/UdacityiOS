@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="1729" y="-457"/>
         </scene>
-        <!--View Controller-->
+        <!--MapVC-->
         <scene sceneID="S0X-sH-vM7">
             <objects>
-                <viewController id="TRg-WT-knF" sceneMemberID="viewController">
+                <viewController id="TRg-WT-knF" customClass="MapVC" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ENo-tN-phx"/>
                         <viewControllerLayoutGuide type="bottom" id="P5C-kk-OQd"/>
@@ -184,12 +184,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jL2-0F-MpW">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Wpb-Kc-iig"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Wpb-Kc-iig">
+                            <connections>
+                                <action selector="logout" destination="TRg-WT-knF" id="UrV-kU-6xR"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="icon_pin" id="rD5-d7-1a5"/>
                             <barButtonItem image="icon_refresh" id="0LN-AL-O79"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="z4G-gn-FcT" id="hp8-Zz-QB9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ep-qZ-j8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
