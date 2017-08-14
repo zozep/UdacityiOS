@@ -222,5 +222,7 @@ final class UdacityUserAPI: NSObject {
         task.resume()
     }
     
-    
+    func getStudentLocations(failure: @escaping (_ error: Error) -> Void, success: @escaping (_ result: Bool) -> Void) {
+        //WIP
+    }
 }

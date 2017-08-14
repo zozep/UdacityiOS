@@ -53,5 +53,27 @@ class MapVC: UIViewController, MKMapViewDelegate {
         
     }
     
+    func getStudentLocations() {
+        let activityIndicator = showActivityIndicator()
+        UdacityUserAPI.sharedInstance().getStudentLocations(failure: { (error) in
+            
+            DispatchQueue.main.async(execute: {
+                activityIndicator.hide()
+                self.createAlertMessage(title: AlertTitle.alert, message: AlertMessage.failedToLoadStudentLocations)
+            })
+            
+        }) { (result) in
+            
+            print("student locations loaded")
+            DispatchQueue.main.async(execute: {
+                activityIndicator.hide()
+               
+                //make func for pins
+                print("showing pins WIP")
+            })
+        }
+    }
+
+    
     
 }
